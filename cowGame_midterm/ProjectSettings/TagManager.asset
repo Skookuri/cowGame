@@ -4,7 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< Updated upstream
   - Cow
+=======
+<<<<<<< HEAD
+  - Pen
+=======
+  - Cow
+>>>>>>> 841095b321d7593fe7725535c6321e45c8f0432b
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
