@@ -11,6 +11,7 @@ public class PlayerMoveAround : MonoBehaviour {
       public static float runSpeed = 5f;
       public float startSpeed = 5f;
       public bool isAlive = true;
+      public bool holdingCow = false;
 
       void Start(){
            //anim = gameObject.GetComponentInChildren<Animator>();
@@ -51,11 +52,13 @@ public class PlayerMoveAround : MonoBehaviour {
             //transform.localScale = theScale;
       }
 
-      void OnTriggerEnter(Collider other) 
+      private void OnCollisionEnter2D(Collision2D collision)
       {
-            if (other.gameObject.CompareTag("Cow"))
-            {
-                  other.gameObject.SetActive(false);
+            if (collision.gameObject.CompareTag("Cow") && !holdingCow) {
+                  holdingCow = true;
+                  Destroy(collision.gameObject);
+            } else if (collision.gameObject.CompareTag("Pen") && holdingCow) {
+                  holdingCow = false;
             }
       }
       
