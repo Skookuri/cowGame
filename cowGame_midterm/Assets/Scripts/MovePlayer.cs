@@ -50,6 +50,16 @@ public class PlayerMoveAround : MonoBehaviour {
             theScale.x *= -1;
             transform.localScale = theScale;
       }
+
+      private void OnCollisionEnter(Collision collision)
+      {
+            if (collision.gameObject.CompareTag("Cow"))
+            {
+                  // Destroy the current object
+                  Destroy(gameObject); 
+                  // Update the winText to display "You Lose!"
+            }
+      }     
 }
 
 // using System.Collections;
