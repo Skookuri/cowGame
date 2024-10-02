@@ -11,6 +11,7 @@ public class PlayerMoveAround : MonoBehaviour {
       public static float runSpeed = 10f;
       public float startSpeed = 10f;
       public bool isAlive = true;
+      public bool holdingCow = false;
 
       void Start(){
            //anim = gameObject.GetComponentInChildren<Animator>();
@@ -48,10 +49,21 @@ public class PlayerMoveAround : MonoBehaviour {
             FaceRight = !FaceRight;
 
             // NOTE: Multiply player's x local scale by -1.
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
+            //Vector3 theScale = transform.localScale;
+            //theScale.x *= -1;
+            //transform.localScale = theScale;
       }
+
+      private void OnCollisionEnter2D(Collision2D collision)
+      {
+            if (collision.gameObject.CompareTag("Cow") && !holdingCow) {
+                  holdingCow = true;
+                  Destroy(collision.gameObject);
+            } else if (collision.gameObject.CompareTag("Pen") && holdingCow) {
+                  holdingCow = false;
+            }
+      }
+      
 }
 // using System.Collections;
 // using System.Collections.Generic;
