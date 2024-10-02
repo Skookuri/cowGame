@@ -33,8 +33,8 @@ public class CowSpawner: MonoBehaviour
             randomItem = Random.Range(0,spawnPool.Count);
             toSpawn = spawnPool[randomItem];
 
-            screenX = Random.Range(-10, 2);
-            screenY = Random.Range(-2, 6);
+            screenX = Random.Range(-3, 11);
+            screenY = Random.Range(-4, 4);
 
             // screenX = Random.Range(c.bounds.min.x, c.bounds.max.x);
             // Debug.Log("screenX: " + screenX);

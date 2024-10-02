@@ -8,8 +8,8 @@ public class PlayerMoveAround : MonoBehaviour {
       //public AudioSource WalkSFX;
       public Rigidbody2D rb2D;
       private bool FaceRight = true; // determine which way player is facing.
-      public static float runSpeed = 5f;
-      public float startSpeed = 5f;
+      public static float runSpeed = 10f;
+      public float startSpeed = 10f;
       public bool isAlive = true;
       public bool holdingCow;
 
@@ -24,7 +24,9 @@ public class PlayerMoveAround : MonoBehaviour {
             //NOTE: Vertical axis: [w] / up arrow, [s] / down arrow
             Vector3 hvMove = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
            if (isAlive == true){
+                  Debug.Log("Old position" + transform.position);
                   transform.position = transform.position + hvMove * runSpeed * Time.deltaTime;
+                  Debug.Log("New position" + transform.position);
 
                   if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0)){
                   //     anim.SetBool ("Walk", true);
@@ -64,7 +66,6 @@ public class PlayerMoveAround : MonoBehaviour {
       }
       
 }
-
 // using System.Collections;
 // using System.Collections.Generic;
 // using UnityEngine;
