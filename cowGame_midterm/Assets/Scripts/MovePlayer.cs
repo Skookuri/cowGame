@@ -11,10 +11,12 @@ public class PlayerMoveAround : MonoBehaviour {
       public static float runSpeed = 5f;
       public float startSpeed = 5f;
       public bool isAlive = true;
+      public bool holdingCow;
 
       void Start(){
            //anim = gameObject.GetComponentInChildren<Animator>();
            rb2D = transform.GetComponent<Rigidbody2D>();
+           holdingCow = false;
       }
 
       void Update(){
