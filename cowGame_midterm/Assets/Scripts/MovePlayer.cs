@@ -52,6 +52,17 @@ public class PlayerMoveAround : MonoBehaviour {
             //theScale.x *= -1;
             //transform.localScale = theScale;
       }
+
+      private void OnCollisionEnter2D(Collision2D collision)
+      {
+            if (collision.gameObject.CompareTag("Cow") && !holdingCow) {
+                  Destroy(GameObject.FindGameObjectWithTag("Cow"));
+                  holdingCow = true;
+            }
+            if (collision.gameObject.CompareTag("Pen") && holdingCow) {
+                  holdingCow = false;
+            }
+      }
 }
 
 // using System.Collections;
