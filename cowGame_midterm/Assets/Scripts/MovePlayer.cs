@@ -56,7 +56,7 @@ public class PlayerMoveAround : MonoBehaviour {
       private void OnCollisionEnter2D(Collision2D collision)
       {
             if (collision.gameObject.CompareTag("Cow") && !holdingCow) {
-                  Destroy(GameObject.FindGameObjectWithTag("Cow"));
+                  Destroy(collision.gameObject);
                   holdingCow = true;
             }
             if (collision.gameObject.CompareTag("Pen") && holdingCow) {
