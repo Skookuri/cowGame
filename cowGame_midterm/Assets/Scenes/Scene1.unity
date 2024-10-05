@@ -3803,6 +3803,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2474192967680984410, guid: d70f519424f864f04a732c3b967876f0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474192967680984410, guid: d70f519424f864f04a732c3b967876f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474192967680984410, guid: d70f519424f864f04a732c3b967876f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.002
+      objectReference: {fileID: 0}
     - target: {fileID: 5354177650202740924, guid: d70f519424f864f04a732c3b967876f0, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
@@ -3834,6 +3846,10 @@ PrefabInstance:
     - target: {fileID: 5786526656717662227, guid: d70f519424f864f04a732c3b967876f0, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077238403048702164, guid: d70f519424f864f04a732c3b967876f0, type: 3}
+      propertyPath: m_Name
+      value: Pen_Art
       objectReference: {fileID: 0}
     - target: {fileID: 7626528603714463155, guid: d70f519424f864f04a732c3b967876f0, type: 3}
       propertyPath: m_RootOrder
@@ -3892,7 +3908,8 @@ PrefabInstance:
       value: Pen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1328724032494696153, guid: d70f519424f864f04a732c3b967876f0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d70f519424f864f04a732c3b967876f0, type: 3}
