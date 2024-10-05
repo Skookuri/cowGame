@@ -1,3 +1,74 @@
+// using System.Collections.Generic;
+// using System.Collections;
+// using UnityEngine;
+
+// public class CowSpawner: MonoBehaviour
+// {
+//     public int numberToSpawn;
+//     public List<GameObject> spawnPool;
+//     private int currentCows = 0;
+//     private GameObject player;
+//     // public GameTimer timer;
+//     // public GameObject spawnArea;
+
+//     void Start()
+//     {
+//         player = GameObject.FindWithTag("Player");
+//         spawnObjects();
+//     }
+
+//     void Update()
+//     {
+        
+//         Debug.Log(returnCurrentCows());
+//     }
+
+//     public void spawnObjects()
+//     {
+//         // public timer;
+//         int randomItem = 0;
+//         float spawnDelay = 0;
+//         GameObject toSpawn;
+
+//         float screenX, screenY;
+//         Vector2 pos;
+        
+//         //while (timer.timerIsRunning == true)
+//         //{
+//             //Debug.Log("Timer is running");
+//         if (currentCows < 5)
+//         {
+//             randomItem = Random.Range(0,spawnPool.Count);
+//             toSpawn = spawnPool[randomItem];
+
+//             screenX = Random.Range(-6, 7);
+//             screenY = Random.Range(-4, 4);
+
+//             pos = new Vector2(screenX, screenY);
+
+//             // yield return new WaitForSeconds(2);
+//             Instantiate(toSpawn, pos,toSpawn.transform.rotation);
+//             currentCows++;
+//         }
+//         ///}
+        
+//     }
+
+//     private void destroyObjects()
+//     {
+//         foreach(GameObject o in GameObject.FindGameObjectsWithTag("Cow"))
+//         {
+//             Destroy(o);
+//             currentCows--;
+//         }
+//     }
+
+//     private int returnCurrentCows()
+//     {
+//         return currentCows;
+//     }
+// }
+
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
@@ -27,7 +98,7 @@ public class CowSpawner: MonoBehaviour
 
         float screenX, screenY;
         Vector2 pos;
-
+        
         for(int i = 0; i < numberToSpawn; i++)
         {
             randomItem = Random.Range(0,spawnPool.Count);
@@ -55,42 +126,3 @@ public class CowSpawner: MonoBehaviour
         }
     }
 }
-
-// using System.Collections.Generic;
-// using System.Collections;
-// using UnityEngine;
-
-// public class CowSpawner : MonoBehaviour {
-
-//       //Object variables
-//       public GameObject cowPrefab;
-//       public Transform[] spawnPoints;
-//       private int rangeEnd;
-//       private Transform spawnPoint;
-
-//       //Timing variables
-//       public float spawnRangeStart = 0.5f;
-//       public float spawnRangeEnd = 5f;
-//       private float timeToSpawn;
-//       private float spawnTimer = 0f;
-
-//       void Start(){
-//        //assign the length of the array to the end of the random range
-//              rangeEnd = spawnPoints.Length - 1 ;
-//        }
-
-//       void FixedUpdate(){
-//             timeToSpawn = Random.Range(spawnRangeStart, spawnRangeEnd);
-//             spawnTimer += 0.01f;
-//             if (spawnTimer >= timeToSpawn){
-//                   spawnCow();
-//                   spawnTimer =0f;
-//             }
-//       }
-
-//       void spawnCow(){
-//             int SPnum = Random.Range(0, rangeEnd);
-//             spawnPoint = spawnPoints[SPnum];
-//             Instantiate(cowPrefab, spawnPoint.position, Quaternion.identity);
-//       }
-// }
