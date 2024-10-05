@@ -25,7 +25,6 @@ public class MoveCow : MonoBehaviour
         if (distance < 5)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, -1 * speed * Time.deltaTime);
-            Debug.Log("Player position: " + player.transform.position);
             // transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
         
