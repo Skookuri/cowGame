@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveCow : MonoBehaviour
 {
+    public Transform target;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class MoveCow : MonoBehaviour
     {
         Vector3 direction = transform.position - target.position;
 
-        if(direction.sqrMagnitude > 25f)
+        if(direction.sqrMagnitude < 25f)
         { 
             transform.Translate(direction.normalized * Time.deltaTime, Space.World);
             transform.forward = direction.normalized;
