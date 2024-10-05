@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMoveAround : MonoBehaviour {
 
@@ -12,11 +13,14 @@ public class PlayerMoveAround : MonoBehaviour {
       public float startSpeed = 5f;
       public bool isAlive = true;
       public bool holdingCow;
+      public TextMeshProUGUI cowCounter;
+      private int count;
 
       void Start(){
            //anim = gameObject.GetComponentInChildren<Animator>();
            rb2D = transform.GetComponent<Rigidbody2D>();
            holdingCow = false;
+           count = 0;
       }
 
       void Update(){
@@ -61,6 +65,8 @@ public class PlayerMoveAround : MonoBehaviour {
             }
             if (collision.gameObject.CompareTag("Pen") && holdingCow) {
                   holdingCow = false;
+                  count = count + 1;
+                  cowCounter.text = "Cows: " + count.ToString();
             }
       }
 }
