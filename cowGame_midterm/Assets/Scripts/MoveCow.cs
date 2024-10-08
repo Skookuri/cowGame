@@ -37,25 +37,19 @@ public class MoveCow : MonoBehaviour
     {
         Vector3 direction = transform.position - target.position;
 
-        if(direction.sqrMagnitude < 25f)
-        { 
+        if(direction.sqrMagnitude < 25f) { 
             transform.Translate(direction.normalized * Time.deltaTime, Space.World);
             transform.forward = direction.normalized;
-
-        if (distance < 5)
-        {
+        }
+        if (distance < 5) {
             isWalking = true;
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, -1 * speed * Time.deltaTime);
             // transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-        }
-        else
-        {
-            if(isWalking)
-            {
+        } else {
+            if(isWalking) {
                 walkCounter -= Time.deltaTime;
 
-                switch(walkDirection)
-                    {
+                switch(walkDirection) {
                         case 0:
                             cowRigidBody.velocity = new Vector2(0, speed);
                             break;
@@ -70,25 +64,18 @@ public class MoveCow : MonoBehaviour
                             break;
                     }
 
-                if (walkCounter < 0)
-                {
+                if (walkCounter < 0) {
                     isWalking = false;
                     waitCounter = waitTime;
                 }
-            }
-            else
-            {
+            } else {
                 waitCounter -= Time.deltaTime;
                 cowRigidBody.velocity = Vector2.zero;
-                if (waitCounter < 0)
-                {
+                if (waitCounter < 0) {
                     ChooseDirection();
                 }
+            }
         }
-        
-        }
-
-        
     }
 
     public void ChooseDirection()
