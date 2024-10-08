@@ -9,7 +9,7 @@ public class PlayerMoveAround : MonoBehaviour {
       //public AudioSource WalkSFX;
       private GameHandler GameHandler;
       public Rigidbody2D rb2D;
-      private bool FaceRight = false; // determine which way player is facing.
+      private bool FaceLeft = false; // determine which way player is facing.
       public static float runSpeed = 5f;
       public float startSpeed = 5f;
       public bool isAlive = true;
@@ -66,7 +66,7 @@ public class PlayerMoveAround : MonoBehaviour {
                         spriteRenderer.sprite = defaultSprite; // Reset to default when not moving sideways
                  }
                   // Turning. Reverse if input is moving the Player right and Player faces left.
-                 if ((hvMove.x < 0 && !FaceRight) || (hvMove.x > 0 && FaceRight)){
+                 if ((hvMove.x < 0 && !FaceLeft) || (hvMove.x > 0 && FaceLeft)){
                         playerTurn();
                   }
             }
@@ -81,7 +81,7 @@ public class PlayerMoveAround : MonoBehaviour {
 
       private void playerTurn(){
             // NOTE: Switch player facing label
-            FaceRight = !FaceRight;
+            FaceLeft = !FaceLeft;
 
             // NOTE: Multiply player's x local scale by -1.
             Vector3 theScale = spriteRenderer.transform.localScale;
