@@ -26,6 +26,7 @@ public class PlayerMoveAround : MonoBehaviour {
       // Sprites for the default and side views
       public Sprite defaultSprite;
       public Sprite sideSprite;
+      public Sprite holdingCowSprite;
 
       void Start(){
            //anim = gameObject.GetComponentInChildren<Animator>();
@@ -38,7 +39,6 @@ public class PlayerMoveAround : MonoBehaviour {
            spriteRenderer = transform.Find("Player_Art").GetComponent<SpriteRenderer>();
 
 
-
            // Set the default sprite initially
            spriteRenderer.sprite = defaultSprite;
       }
@@ -48,7 +48,12 @@ public class PlayerMoveAround : MonoBehaviour {
             //NOTE: Vertical axis: [w] / up arrow, [s] / down arrow
             Vector3 hvMove = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
            if (isAlive == true){
-                  transform.position = transform.position + hvMove * runSpeed * Time.deltaTime;
+                  //transform.position = transform.position + hvMove * runSpeed * Time.deltaTime;
+                  float moveHorizontal = Input.GetAxis("Horizontal");
+                  float moveVertical = Input.GetAxis("Vertical");
+
+                  Vector2 movement = new Vector2(moveHorizontal, moveVertical) * runSpeed;
+                  rb2D.velocity = movement;
 
                   if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0)){
                   //     anim.SetBool ("Walk", true);
@@ -72,10 +77,7 @@ public class PlayerMoveAround : MonoBehaviour {
             }
 
             if (holdingCow) {
-                  Debug.Log("holding cow");
-            }
-            else {
-                  Debug.Log("not holding cow");
+                  spriteRenderer.sprite = holdingCowSprite;
             }
       }
 
@@ -92,6 +94,7 @@ public class PlayerMoveAround : MonoBehaviour {
       private void OnCollisionEnter2D(Collision2D collision)
       {
             if (collision.gameObject.CompareTag("Cow") && !holdingCow) {
+                  
                   Destroy(collision.gameObject);
                   holdingCow = true;
             }
