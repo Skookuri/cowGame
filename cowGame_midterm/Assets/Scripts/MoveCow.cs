@@ -19,7 +19,7 @@ public class MoveCow : MonoBehaviour
     private float waitCounter;
 
     private int walkDirection;
-    public Transform target;
+    // public Transform target;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,12 +35,12 @@ public class MoveCow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = transform.position - target.position;
+        // Vector3 direction = transform.position - target.position;
 
-        if(direction.sqrMagnitude < 25f) { 
-            transform.Translate(direction.normalized * Time.deltaTime, Space.World);
-            transform.forward = direction.normalized;
-        }
+        // if(direction.sqrMagnitude < 25f) { 
+        //     transform.Translate(direction.normalized * Time.deltaTime, Space.World);
+        //     transform.forward = direction.normalized;
+        // }
         if (distance < 5) {
             isWalking = true;
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, -1 * speed * Time.deltaTime);
