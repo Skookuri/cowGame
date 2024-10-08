@@ -3459,6 +3459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 5097761143257227456, guid: 15dea9602c09948f88e5fe930fe3c12f, type: 3}
+      propertyPath: m_TagString
+      value: GameHandler
+      objectReference: {fileID: 0}
     - target: {fileID: 7227649435366053582, guid: 15dea9602c09948f88e5fe930fe3c12f, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -3519,6 +3523,10 @@ PrefabInstance:
       propertyPath: timerIsRunning
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9129819168483250345, guid: 15dea9602c09948f88e5fe930fe3c12f, type: 3}
+      propertyPath: cowCounter
+      value: 
+      objectReference: {fileID: 910623453}
     - target: {fileID: 9129819168483250345, guid: 15dea9602c09948f88e5fe930fe3c12f, type: 3}
       propertyPath: cowCounterText
       value: 
