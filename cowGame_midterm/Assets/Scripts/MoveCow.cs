@@ -24,7 +24,7 @@ public class MoveCow : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        //target = GameObject.FindWithTag("Player").transform;
+        // target = GameObject.FindWithTag("Player").transform;
         cowRigidBody = GetComponent<Rigidbody2D>();
 
         waitCounter = waitTime;
@@ -35,12 +35,12 @@ public class MoveCow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = transform.position - target.position;
+        // Vector3 direction = transform.position - target.position;
 
-        if(direction.sqrMagnitude < 25f)
-        { 
-            transform.Translate(direction.normalized * Time.deltaTime, Space.World);
-            transform.forward = direction.normalized;
+        // if(direction.sqrMagnitude < 25f)
+        // { 
+        //     transform.Translate(direction.normalized * Time.deltaTime, Space.World);
+        //     transform.forward = direction.normalized;
 
         if (distance < 5)
         {
@@ -86,9 +86,8 @@ public class MoveCow : MonoBehaviour
                 }
         }
         
-        }
 
-        
+        }
     }
 
     public void ChooseDirection()

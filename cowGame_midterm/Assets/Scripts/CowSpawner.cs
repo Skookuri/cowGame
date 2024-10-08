@@ -26,12 +26,11 @@ public class CowSpawner: MonoBehaviour
     {
         waitCounter -= Time.deltaTime;
 
-        // Debug.Log("Wait time: " + waitTime);
-        // Debug.Log("Wait Counter: " + waitCounter);
+        Debug.Log("Wait time: " + waitTime);
+        Debug.Log("Wait Counter: " + waitCounter);
         if (waitCounter <= 0)
         {
             spawnObjects();
-            waitCounter = waitTime;
         }
         // timerIsRunning = timer.GetComponent<timerIsRunning>();
         // while (timerIsRunning)
@@ -63,6 +62,7 @@ public class CowSpawner: MonoBehaviour
 
         Instantiate(toSpawn, pos,toSpawn.transform.rotation); 
         numberSpawned++;
+        waitCounter = waitTime;
         
         // for(int i = 0; i < numberToSpawn; i++)
         // {
