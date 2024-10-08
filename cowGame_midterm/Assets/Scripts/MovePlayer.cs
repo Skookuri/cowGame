@@ -9,7 +9,7 @@ public class PlayerMoveAround : MonoBehaviour {
       //public AudioSource WalkSFX;
       private GameHandler GameHandler;
       public Rigidbody2D rb2D;
-      private bool FaceRight = true; // determine which way player is facing.
+      private bool FaceLeft = false; // determine which way player is facing.
       public static float runSpeed = 5f;
       public float startSpeed = 5f;
       public bool isAlive = true;
@@ -19,12 +19,28 @@ public class PlayerMoveAround : MonoBehaviour {
       public GameObject droppedCow;
       public Transform player;
 
+      // Reference to the SpriteRenderer component in Player_Art
+      private SpriteRenderer spriteRenderer;
+
+
+      // Sprites for the default and side views
+      public Sprite defaultSprite;
+      public Sprite sideSprite;
+
       void Start(){
            //anim = gameObject.GetComponentInChildren<Animator>();
            rb2D = transform.GetComponent<Rigidbody2D>();
            holdingCow = false;
            GameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
            //count = 0;
+
+           // Get the SpriteRenderer component from the Player_Art child
+           spriteRenderer = transform.Find("Player_Art").GetComponent<SpriteRenderer>();
+
+
+
+           // Set the default sprite initially
+           spriteRenderer.sprite = defaultSprite;
       }
 
       void Update(){
@@ -44,8 +60,13 @@ public class PlayerMoveAround : MonoBehaviour {
                   //     WalkSFX.Stop();
                  }
 
+                 if (hvMove.x != 0) {
+                        spriteRenderer.sprite = sideSprite;
+                 } else {
+                        spriteRenderer.sprite = defaultSprite; // Reset to default when not moving sideways
+                 }
                   // Turning. Reverse if input is moving the Player right and Player faces left.
-                 if ((hvMove.x <0 && !FaceRight) || (hvMove.x >0 && FaceRight)){
+                 if ((hvMove.x < 0 && !FaceLeft) || (hvMove.x > 0 && FaceLeft)){
                         playerTurn();
                   }
             }
@@ -60,12 +81,12 @@ public class PlayerMoveAround : MonoBehaviour {
 
       private void playerTurn(){
             // NOTE: Switch player facing label
-            FaceRight = !FaceRight;
+            FaceLeft = !FaceLeft;
 
             // NOTE: Multiply player's x local scale by -1.
-            //Vector3 theScale = transform.localScale;
-            //theScale.x *= -1;
-            //transform.localScale = theScale;
+            Vector3 theScale = spriteRenderer.transform.localScale;
+            theScale.x *= -1;
+            spriteRenderer.transform.localScale = theScale;
       }
 
       private void OnCollisionEnter2D(Collision2D collision)
@@ -89,47 +110,3 @@ public class PlayerMoveAround : MonoBehaviour {
             }
       }
 }
-
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-
-// public class MoveSprite : MonoBehaviour
-// {
-//     // Speed at which the sprite moves
-//     public float moveSpeed = 1f;
-
-//     // Variable to store the initial scale of the sprite
-//     private Vector3 originalScale;
-
-//     // Start is called before the first frame update
-//     void Start()
-//     {
-//         // Save the original scale of the sprite at the start
-//         originalScale = transform.localScale;
-//     }
-
-//     // Update is called once per frame
-//     void Update()
-//     {
-//         // Check if the "A" key is held down
-//         if (Input.GetKey(KeyCode.A))
-//         {
-//             // Move the sprite exactly by 1 unit per frame in the left direction
-//             transform.Translate(Vector3.left * moveSpeed);
-
-//             // Flip the sprite by setting the localScale's x to negative
-//             transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
-//         }
-
-//         // Check if the "D" key is held down
-//         if (Input.GetKey(KeyCode.D))
-//         {
-//             // Move the sprite exactly by 1 unit per frame in the right direction
-//             transform.Translate(Vector3.right * moveSpeed);
-
-//             // Restore the sprite's original scale to face right
-//             transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
-//         }
-//     }
-// } //comment
