@@ -19,11 +19,12 @@ public class MoveCow : MonoBehaviour
     private float waitCounter;
 
     private int walkDirection;
-
+    //public Transform target;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        //target = GameObject.FindWithTag("Player").transform;
         cowRigidBody = GetComponent<Rigidbody2D>();
 
         waitCounter = waitTime;
@@ -34,10 +35,12 @@ public class MoveCow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
-        direction.Normalize();
-        // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Vector3 direction = transform.position - target.position;
+
+        if(direction.sqrMagnitude < 25f)
+        { 
+            transform.Translate(direction.normalized * Time.deltaTime, Space.World);
+            transform.forward = direction.normalized;
 
         if (distance < 5)
         {
