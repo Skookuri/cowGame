@@ -15,6 +15,8 @@ public class PlayerMoveAround : MonoBehaviour {
       public bool holdingCow;
       public TextMeshProUGUI cowCounter;
       private int count;
+      public GameObject droppedCow;
+      public Transform player;
 
       void Start(){
            //anim = gameObject.GetComponentInChildren<Animator>();
@@ -45,6 +47,13 @@ public class PlayerMoveAround : MonoBehaviour {
                         playerTurn();
                   }
             }
+
+            if (holdingCow) {
+                  Debug.Log("holding cow");
+            }
+            else {
+                  Debug.Log("not holding cow");
+            }
       }
 
       private void playerTurn(){
@@ -67,6 +76,13 @@ public class PlayerMoveAround : MonoBehaviour {
                   holdingCow = false;
                   count = count + 1;
                   cowCounter.text = "Cows: " + count.ToString();
+            }
+            if (collision.gameObject.CompareTag("Cactus") && holdingCow) {
+                  holdingCow = false;
+                  float x = player.transform.position.x - 1;
+                  float y = player.transform.position.y;
+                  float z = player.transform.position.y;
+                  Instantiate(droppedCow, new Vector3(x, y, z), Quaternion.identity);
             }
       }
 }
