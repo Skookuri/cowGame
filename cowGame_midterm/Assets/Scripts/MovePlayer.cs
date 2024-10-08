@@ -1,26 +1,30 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-using TMPro;
+//using TMPro;
 
 public class PlayerMoveAround : MonoBehaviour {
 
       //public Animator anim;
       //public AudioSource WalkSFX;
+      private GameHandler GameHandler;
       public Rigidbody2D rb2D;
       private bool FaceRight = true; // determine which way player is facing.
       public static float runSpeed = 5f;
       public float startSpeed = 5f;
       public bool isAlive = true;
       public bool holdingCow;
-      public TextMeshProUGUI cowCounter;
-      private int count;
+      //public TextMeshProUGUI cowCounter;
+      //private int count;
+      public GameObject droppedCow;
+      public Transform player;
 
       void Start(){
            //anim = gameObject.GetComponentInChildren<Animator>();
            rb2D = transform.GetComponent<Rigidbody2D>();
            holdingCow = false;
-           count = 0;
+           GameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+           //count = 0;
       }
 
       void Update(){
@@ -45,6 +49,13 @@ public class PlayerMoveAround : MonoBehaviour {
                         playerTurn();
                   }
             }
+
+            if (holdingCow) {
+                  Debug.Log("holding cow");
+            }
+            else {
+                  Debug.Log("not holding cow");
+            }
       }
 
       private void playerTurn(){
@@ -65,8 +76,16 @@ public class PlayerMoveAround : MonoBehaviour {
             }
             if (collision.gameObject.CompareTag("Pen") && holdingCow) {
                   holdingCow = false;
-                  count = count + 1;
-                  cowCounter.text = "Cows: " + count.ToString();
+                  GameHandler.updateCowCounter();
+                  //count = count + 1;
+                  //cowCounter.text = "Cows: " + count.ToString();
+            }
+            if (collision.gameObject.CompareTag("Cactus") && holdingCow) {
+                  holdingCow = false;
+                  float x = player.transform.position.x - 1;
+                  float y = player.transform.position.y;
+                  float z = player.transform.position.y;
+                  Instantiate(droppedCow, new Vector3(x, y, z), Quaternion.identity);
             }
       }
 }

@@ -3,19 +3,21 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameHandler : MonoBehaviour
 {
     private GameObject player;
-    public int numCows = 0;
-    public GameObject cowCounterText;
     private string sceneName;
+    public TextMeshProUGUI cowCounter;
+    private int count;
+    
 
 
     void Start(){
         player = GameObject.FindWithTag("Player");
         sceneName = SceneManager.GetActiveScene().name;
-        updateCowCounterText();
+        count = 0;
       }
 
     // Update is called once per frame
@@ -24,8 +26,9 @@ public class GameHandler : MonoBehaviour
         
     }
 
-    void updateCowCounterText() {
-        Text cowCounterTextTemp = cowCounterText.GetComponent<Text>();
-        cowCounterTextTemp.text = "Cows:\n" + numCows;
+    public void updateCowCounter() {
+        Debug.Log("hi");
+        count = count + 1;
+        cowCounter.text = "Cows: " + count.ToString();
     }
 }

@@ -97,10 +97,10 @@ BoxCollider2D:
   m_Offset: {x: -4.875894, y: -4.8261266}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.9}
+    newSize: {x: 0.64, y: 0.9}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -123,6 +123,8 @@ MonoBehaviour:
   startSpeed: 10
   isAlive: 1
   holdingCow: 0
+  holdingCowSprite: {fileID: 0}
+  cowCounter: {fileID: 0}
 --- !u!1 &6901837889929940659
 GameObject:
   m_ObjectHideFlags: 0

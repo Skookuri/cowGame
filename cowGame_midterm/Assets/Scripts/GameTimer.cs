@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameTimer : MonoBehaviour
 {
@@ -20,9 +21,9 @@ public class GameTimer : MonoBehaviour
                 DisplayTime(timeRemaining);
             }
             else {
-                Debug.Log("Time's Up!");
                 timeRemaining = 0;
                 timerIsRunning = false;
+                SceneManager.LoadScene("Level1Win");
             }
         }
     }
