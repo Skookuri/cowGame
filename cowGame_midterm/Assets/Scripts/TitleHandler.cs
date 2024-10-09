@@ -17,10 +17,6 @@ public class TitleHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            InstructionsUI.SetActive(false);
-        }
-        //or statement was giving compiler issues for some reason
         if (Input.GetMouseButtonDown(0)) {
             InstructionsUI.SetActive(false);
         }
@@ -31,7 +27,7 @@ public class TitleHandler : MonoBehaviour
     }
 
     public void Play() {
-                Debug.Log("hi");
+        Debug.Log("hi");
         SceneManager.LoadScene("Level1");
     }
 
