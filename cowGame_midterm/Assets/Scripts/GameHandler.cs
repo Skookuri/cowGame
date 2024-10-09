@@ -27,7 +27,6 @@ public class GameHandler : MonoBehaviour
     }
 
     public void updateCowCounter() {
-        Debug.Log("hi");
         count = count + 1;
         cowCounter.text = "$ Earned: $" + count.ToString() + "k";
     }
