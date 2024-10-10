@@ -3252,6 +3252,7 @@ GameObject:
   - component: {fileID: 956649909}
   - component: {fileID: 956649908}
   - component: {fileID: 956649907}
+  - component: {fileID: 956649910}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3300,9 +3301,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 33
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3333,6 +3334,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &956649910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956649906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea157715da993bf4487ab31f95a70e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1786174274}
+  offset: {x: 0, y: 0, z: -10}
 --- !u!1 &976913760
 GameObject:
   m_ObjectHideFlags: 0
@@ -4707,6 +4722,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1786174274}
     - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: cowInPen
+      value: 
+      objectReference: {fileID: 6744137418113990119, guid: bb06ad814856f2248ad9c9797c5be5b4, type: 3}
+    - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: cowCounter
       value: 
       objectReference: {fileID: 910623453}
@@ -4715,9 +4734,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6744137418113990119, guid: bb06ad814856f2248ad9c9797c5be5b4, type: 3}
     - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: spawnOffset.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: holdingCowSprite
       value: 
       objectReference: {fileID: 21300000, guid: 458bb0f071a8746afbc499291d38e3f9, type: 3}
+    - target: {fileID: 6530038095660847405, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530038095660847405, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6550737873277749788, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: m_Size.x
+      value: 2.0895188
+      objectReference: {fileID: 0}
+    - target: {fileID: 6550737873277749788, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: m_Size.y
+      value: 3.2616973
+      objectReference: {fileID: 0}
+    - target: {fileID: 6550737873277749788, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.004186988
+      objectReference: {fileID: 0}
+    - target: {fileID: 6550737873277749788, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.04721284
+      objectReference: {fileID: 0}
     - target: {fileID: 6788739355559293526, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4736,11 +4783,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6985386655947570498, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.43
+      value: -6.64
       objectReference: {fileID: 0}
     - target: {fileID: 6985386655947570498, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6985386655947570498, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: m_LocalPosition.z
