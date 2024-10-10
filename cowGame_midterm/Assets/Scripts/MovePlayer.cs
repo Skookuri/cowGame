@@ -19,6 +19,10 @@ public class PlayerMoveAround : MonoBehaviour {
       public GameObject droppedCow;
       public Transform player;
 
+
+      public GameObject cowInPen; // The sprite prefab to instantiate
+      public Vector3 spawnOffset;
+
       // Reference to the SpriteRenderer component in Player_Art
       private SpriteRenderer spriteRenderer;
 
@@ -101,6 +105,11 @@ public class PlayerMoveAround : MonoBehaviour {
             if (collision.gameObject.CompareTag("Pen") && holdingCow) {
                   holdingCow = false;
                   GameHandler.updateCowCounter();
+
+                  ContactPoint2D contact = collision.contacts[0];
+                  Vector3 spawnPosition = new Vector3(contact.point.x, contact.point.y, 0) + spawnOffset;
+                  Instantiate(cowInPen, spawnPosition, Quaternion.identity);
+
                   //count = count + 1;
                   //cowCounter.text = "Cows: " + count.ToString();
             }
