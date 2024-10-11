@@ -30,7 +30,9 @@ public class PlayerMoveAround : MonoBehaviour {
       // Sprites for the default and side views
       public Sprite defaultSprite;
       public Sprite sideSprite;
+      public Sprite backSprite;
       public Sprite holdingCowSprite;
+      
 
       void Start(){
            //anim = gameObject.GetComponentInChildren<Animator>();
@@ -71,6 +73,8 @@ public class PlayerMoveAround : MonoBehaviour {
 
                  if (hvMove.x != 0) {
                         spriteRenderer.sprite = sideSprite;
+                 } else if (hvMove.y > 0) {
+                        spriteRenderer.sprite = backSprite;
                  } else {
                         spriteRenderer.sprite = defaultSprite; // Reset to default when not moving sideways
                  }
