@@ -11917,7 +11917,7 @@ PrefabInstance:
     - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: holdingCowSprite
       value: 
-      objectReference: {fileID: 21300000, guid: e6e9e5dd2cd6e4abb81da91069aa370a, type: 3}
+      objectReference: {fileID: 21300000, guid: 16145ce584eb64c04ba0b36541918c70, type: 3}
     - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: spawnOffsetCactus.x
       value: 1
