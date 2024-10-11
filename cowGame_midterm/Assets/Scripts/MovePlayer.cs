@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMoveAround : MonoBehaviour {
 
-      //public Animator anim;
+      
       //public AudioSource WalkSFX;
       private GameHandler GameHandler;
       public Rigidbody2D rb2D;
@@ -26,6 +26,9 @@ public class PlayerMoveAround : MonoBehaviour {
       // Reference to the SpriteRenderer component in Player_Art
       private SpriteRenderer spriteRenderer;
 
+      // Reference to the Animator component in Player_Art
+      private Animator animator;
+
 
       // Sprites for the default and side views
       public Sprite defaultSprite;
@@ -44,15 +47,24 @@ public class PlayerMoveAround : MonoBehaviour {
            // Get the SpriteRenderer component from the Player_Art child
            spriteRenderer = transform.Find("Player_Art").GetComponent<SpriteRenderer>();
 
+           // Get the Animator component from the Player_Art child
+           animator = transform.Find("Player_Art").GetComponent<Animator>();
 
            // Set the default sprite initially
            spriteRenderer.sprite = defaultSprite;
+
+           // Ensure the animator is disabled initially
+            animator.enabled = false;
       }
 
       void Update(){
             //NOTE: Horizontal axis: [a] / left arrow is -1, [d] / right arrow is 1
             //NOTE: Vertical axis: [w] / up arrow, [s] / down arrow
             Vector3 hvMove = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+
+            // Update vertical movement for the Animator
+            animator.SetFloat("Vertical", hvMove.y);  // Send the vertical movement to the Animator
+            Debug.Log("Horizontal: " + hvMove.x + ", Vertical: " + hvMove.y); // Log movement values
            if (isAlive == true){
                   //transform.position = transform.position + hvMove * runSpeed * Time.deltaTime;
                   float moveHorizontal = Input.GetAxis("Horizontal");
@@ -72,11 +84,17 @@ public class PlayerMoveAround : MonoBehaviour {
                  }
 
                  if (hvMove.x != 0) {
+                        spriteRenderer.enabled = true;
                         spriteRenderer.sprite = sideSprite;
+                        animator.enabled = false;
                  } else if (hvMove.y > 0) {
-                        spriteRenderer.sprite = backSprite;
+                        //spriteRenderer.enabled = false; // Disable SpriteRenderer
+                        animator.enabled = true; // Enable Animator for back view
+                        //Debug.Log("Animator Enabled - Moving Up");
                  } else {
-                        spriteRenderer.sprite = defaultSprite; // Reset to default when not moving sideways
+                        spriteRenderer.enabled = true;
+                        spriteRenderer.sprite = defaultSprite;
+                        animator.enabled = false; // Disable Animator
                  }
                   // Turning. Reverse if input is moving the Player right and Player faces left.
                  if ((hvMove.x < 0 && !FaceLeft) || (hvMove.x > 0 && FaceLeft)){
