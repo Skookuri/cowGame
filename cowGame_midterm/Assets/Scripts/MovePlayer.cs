@@ -95,23 +95,21 @@ public class PlayerMoveAround : MonoBehaviour {
                   //     WalkSFX.Stop();
                  }
 
-                 if ((hvMove.y < 0) && (!holdingCow)) {
-                        //spriteRenderer.enabled = false;
-                        animator.enabled = true; // Enable Animator for front view
-                        //animator.SetFloat("Vertical", hvMove.y);
-                        //Debug.Log("Animator Enabled - Moving Down");
-                  } else if ((hvMove.y > 0) && (!holdingCow)) {
-                        animator.enabled = true; // Enable Animator for back view
-                        //animator.SetFloat("Vertical", hvMove.y);
-                        //Debug.Log("Animator Enabled - Moving Up");
-                  } else if ((hvMove.x != 0) && (!holdingCow)) {
-                        spriteRenderer.enabled = true;
-                        spriteRenderer.sprite = sideSprite;
-                        animator.enabled = false;
+                 if (holdingCow) {
+                        spriteRenderer.sprite = holdingCowSprite;
                   } else if (!holdingCow) {
-                        //animator.SetFloat("Vertical", 0); // Return to default
-                        animator.enabled = false; // Disable Animator
-                        spriteRenderer.sprite = defaultSprite;
+                        if (hvMove.y < 0) {
+                              animator.enabled = true; // Enable Animator for front view
+                        } else if (hvMove.y > 0) {
+                              animator.enabled = true; // Enable Animator for back view
+                        } else if (hvMove.x != 0) {
+                              spriteRenderer.enabled = true;
+                              spriteRenderer.sprite = sideSprite;
+                              animator.enabled = false;
+                        } else {
+                              animator.enabled = false; // Disable Animator
+                              spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
+                        }
                   }
                   // Turning. Reverse if input is moving the Player right and Player faces left.
                  if ((hvMove.x < 0 && !FaceLeft) || (hvMove.x > 0 && FaceLeft)){
@@ -119,9 +117,7 @@ public class PlayerMoveAround : MonoBehaviour {
                   }
             }
 
-            if (holdingCow) {
-                  spriteRenderer.sprite = holdingCowSprite;
-            }
+            
       }
 
       private void playerTurn(){
