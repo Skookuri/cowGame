@@ -11903,6 +11903,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6fa1520943f2876448632013e1dd48e0, type: 3}
+    - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: flashDuration
       value: 0.075
       objectReference: {fileID: 0}
@@ -12004,7 +12008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8678562751532504572, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8678562751532504572, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: m_SortingOrder

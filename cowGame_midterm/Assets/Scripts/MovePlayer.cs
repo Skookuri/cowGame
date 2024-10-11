@@ -57,8 +57,11 @@ public class PlayerMoveAround : MonoBehaviour {
            // Set the default sprite initially
            spriteRenderer.sprite = defaultSprite;
 
-           // Ensure the animator is disabled initially
-            animator.enabled = false;
+           // Ensure the animator is enabled initially
+           spriteRenderer.enabled = true;
+
+            // Ensure the animator is enabled initially
+            animator.enabled = true;
 
             if (flashImage != null) {
                   flashImage.color = new Color(1, 0, 0, 0); // Red, fully transparent
@@ -91,18 +94,23 @@ public class PlayerMoveAround : MonoBehaviour {
                   //     WalkSFX.Stop();
                  }
 
-                 if (hvMove.x != 0) {
+                 if (hvMove.y < 0) {
+                        //spriteRenderer.enabled = false;
+                        animator.enabled = true; // Enable Animator for front view
+                        //animator.setFloat("Vertical", hvMove.y);
+                        //Debug.Log("Animator Enabled - Moving Down");
+                 } else if (hvMove.y > 0) {
+                        animator.enabled = true; // Enable Animator for back view
+                        //animator.SetFloat("Vertical", hvMove.y);
+                        //Debug.Log("Animator Enabled - Moving Up");
+                 } else if (hvMove.x != 0) {
                         spriteRenderer.enabled = true;
                         spriteRenderer.sprite = sideSprite;
                         animator.enabled = false;
-                 } else if (hvMove.y > 0) {
-                        //spriteRenderer.enabled = false; // Disable SpriteRenderer
-                        animator.enabled = true; // Enable Animator for back view
-                        //Debug.Log("Animator Enabled - Moving Up");
                  } else {
-                        spriteRenderer.enabled = true;
+                        //animator.SetFloat("Vertical", 0); //return to default
+                        animator.enabled = false;// Disable Animator
                         spriteRenderer.sprite = defaultSprite;
-                        animator.enabled = false; // Disable Animator
                  }
                   // Turning. Reverse if input is moving the Player right and Player faces left.
                  if ((hvMove.x < 0 && !FaceLeft) || (hvMove.x > 0 && FaceLeft)){
