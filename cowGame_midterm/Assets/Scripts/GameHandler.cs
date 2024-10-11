@@ -56,14 +56,14 @@ public class GameHandler : MonoBehaviour
     }
 
     public void Pause() {
-        //need to add stuff that changes the time
         isPaused = true;
+        Time.timeScale = 0f;
         pauseUI.SetActive(true);
     }
 
     public void Resume() {
-        //need to add time stuff
         isPaused = false;
+        Time.timeScale = 1f;
         pauseUI.SetActive(false);
     }
 

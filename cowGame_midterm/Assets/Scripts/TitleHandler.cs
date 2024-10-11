@@ -32,7 +32,10 @@ public class TitleHandler : MonoBehaviour
     }
 
     public void Quit() {
-        //Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }
