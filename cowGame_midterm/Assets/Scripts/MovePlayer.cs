@@ -75,6 +75,7 @@ public class PlayerMoveAround : MonoBehaviour {
 
             // Update vertical movement for the Animator
             animator.SetFloat("Vertical", hvMove.y);  // Send the vertical movement to the Animator
+            animator.SetBool("HasCow", holdingCow);
             Debug.Log("Horizontal: " + hvMove.x + ", Vertical: " + hvMove.y); // Log movement values
            if (isAlive == true){
                   //transform.position = transform.position + hvMove * runSpeed * Time.deltaTime;
@@ -94,24 +95,24 @@ public class PlayerMoveAround : MonoBehaviour {
                   //     WalkSFX.Stop();
                  }
 
-                 if (hvMove.y < 0) {
+                 if ((hvMove.y < 0) && (!holdingCow)) {
                         //spriteRenderer.enabled = false;
                         animator.enabled = true; // Enable Animator for front view
-                        //animator.setFloat("Vertical", hvMove.y);
+                        //animator.SetFloat("Vertical", hvMove.y);
                         //Debug.Log("Animator Enabled - Moving Down");
-                 } else if (hvMove.y > 0) {
+                  } else if ((hvMove.y > 0) && (!holdingCow)) {
                         animator.enabled = true; // Enable Animator for back view
                         //animator.SetFloat("Vertical", hvMove.y);
                         //Debug.Log("Animator Enabled - Moving Up");
-                 } else if (hvMove.x != 0) {
+                  } else if ((hvMove.x != 0) && (!holdingCow)) {
                         spriteRenderer.enabled = true;
                         spriteRenderer.sprite = sideSprite;
                         animator.enabled = false;
-                 } else {
-                        //animator.SetFloat("Vertical", 0); //return to default
-                        animator.enabled = false;// Disable Animator
+                  } else if (!holdingCow) {
+                        //animator.SetFloat("Vertical", 0); // Return to default
+                        animator.enabled = false; // Disable Animator
                         spriteRenderer.sprite = defaultSprite;
-                 }
+                  }
                   // Turning. Reverse if input is moving the Player right and Player faces left.
                  if ((hvMove.x < 0 && !FaceLeft) || (hvMove.x > 0 && FaceLeft)){
                         playerTurn();
