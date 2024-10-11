@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 //using TMPro;
 
 public class PlayerMoveAround : MonoBehaviour {
@@ -18,7 +19,10 @@ public class PlayerMoveAround : MonoBehaviour {
       //private int count;
       public GameObject droppedCow;
       public Transform player;
+      public Vector3 spawnOffsetCactus;
 
+      public Image flashImage; // Assign the FlashImage in the Inspector
+      public float flashDuration = 0.5f; // Duration of the flash effect
 
       public GameObject cowInPen; // The sprite prefab to instantiate
       public Vector3 spawnOffset;
@@ -55,6 +59,10 @@ public class PlayerMoveAround : MonoBehaviour {
 
            // Ensure the animator is disabled initially
             animator.enabled = false;
+
+            if (flashImage != null) {
+                  flashImage.color = new Color(1, 0, 0, 0); // Red, fully transparent
+            }
       }
 
       void Update(){
@@ -137,10 +145,50 @@ public class PlayerMoveAround : MonoBehaviour {
             }
             if (collision.gameObject.CompareTag("Cactus") && holdingCow) {
                   holdingCow = false;
+
+                  StartCoroutine(FlashScreen());
+
                   float x = player.transform.position.x - 1;
                   float y = player.transform.position.y;
                   float z = player.transform.position.y;
-                  Instantiate(droppedCow, new Vector3(x, y, z), Quaternion.identity);
+                  ContactPoint2D contact = collision.contacts[0];
+                  Vector3 spawnPosition = new Vector3(contact.point.x, contact.point.y, 0) + spawnOffsetCactus;
+                  Instantiate(droppedCow, spawnPosition, Quaternion.identity);
             }
+      }
+
+      private IEnumerator FlashScreen()
+      {
+            float elapsedTime = 0f;
+            float targetAlpha = 1f;
+            Color color = flashImage.color;
+
+            while (elapsedTime < flashDuration)
+            {
+                  float alpha = Mathf.Lerp(0, targetAlpha, elapsedTime / flashDuration);
+                  flashImage.color = new Color(color.r, color.g, color.b, alpha);
+                  elapsedTime += Time.deltaTime;
+                  yield return null;
+            }
+    
+            // Ensure it's fully opaque
+            flashImage.color = new Color(color.r, color.g, color.b, targetAlpha);
+
+            // Pause at full opacity
+            //yield return new WaitForSeconds(0.1f); // Short pause before fading out
+
+            // Fade out
+            elapsedTime = 0f;
+
+            while (elapsedTime < flashDuration)
+            {
+                  float alpha = Mathf.Lerp(targetAlpha, 0, elapsedTime / flashDuration);
+                  flashImage.color = new Color(color.r, color.g, color.b, alpha);
+                  elapsedTime += Time.deltaTime;
+                  yield return null;
+            }
+
+            // Ensure it's fully transparent
+            flashImage.color = new Color(color.r, color.g, color.b, 0);
       }
 }
