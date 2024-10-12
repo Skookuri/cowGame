@@ -195,9 +195,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  isWalking: 0
-  walkTime: 1
-  waitTime: 0.1
+  startWaitTime: 2
+  Cow: {fileID: 6744137418113990119}
+  minX: -6.5
+  maxX: 10
+  minY: 5
+  maxY: -7
 --- !u!50 &-620697641236914746
 Rigidbody2D:
   serializedVersion: 4

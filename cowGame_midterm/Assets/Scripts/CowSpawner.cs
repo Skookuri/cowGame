@@ -61,7 +61,8 @@ public class CowSpawner: MonoBehaviour
 
         pos = new Vector2(screenX, screenY);
 
-        Instantiate(toSpawn, pos,toSpawn.transform.rotation); 
+        Instantiate(toSpawn, pos,toSpawn.transform.rotation);
+
         numberSpawned++;
         
         // for(int i = 0; i < numberToSpawn; i++)
