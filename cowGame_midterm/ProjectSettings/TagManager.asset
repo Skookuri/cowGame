@@ -8,6 +8,8 @@ TagManager:
   - GameHandler
   - Cow
   - Cactus
+  - MoveSpot
+  - Border
   layers:
   - Default
   - TransparentFX

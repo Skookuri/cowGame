@@ -1,151 +1,186 @@
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCow : MonoBehaviour {
+public class MoveCow : MonoBehaviour
+{
+    private Rigidbody2D cowRigidBody;
+    private GameObject[] borders;
+    private GameObject[] cactuses;
+    private List<GameObject> avoidObjects = new List<GameObject>();
 
-       public float speed = 10f;
-       private float waitTime;
-       public float startWaitTime = 2f;
+    private GameObject player;
+    public float speed;
 
-       public GameObject Cow;
+    // private float distance;
+    // private Vector2 afraidCenter;
 
-       private Transform moveSpot;
-       public Rigidbody2D rb2D;
-       public float minX;
-       public float maxX;
-       public float minY;
-       public float maxY;
+    public bool isWalking;
 
-       void Start(){
-              
-              rb2D = transform.GetComponent<Rigidbody2D>();
-              waitTime = startWaitTime;
-              ChooseDirection();
-       }
+    public float walkTime;
+    private float walkCounter;
+    public float waitTime;
+    private float waitCounter;
 
-       public void ChooseDirection()
-       {
-        float randomX = Random.Range(minX, maxX);
-        float randomY = Random.Range(minY, maxY);
-        moveSpot = GameObject.FindGameObjectWithTag("MoveSpot").transform;
-        moveSpot.position = new Vector2(randomX, randomY) * speed;
-        Debug.Log("This cow is going to: " + randomX + " and " + randomY);
-       }
+    private int walkDirection;
 
-       void Update(){
+    // Start is called before the first frame update
+    void Start()
+    {
+        borders = GameObject.FindGameObjectsWithTag("Border");
+        player = GameObject.FindWithTag("Player");
+        cactuses = GameObject.FindGameObjectsWithTag("Cactus");
+        cowRigidBody = GetComponent<Rigidbody2D>();
 
+        waitCounter = waitTime;
+        walkCounter = walkTime;
+        ChooseDirection();
+    }
 
-              transform.position = Vector2.MoveTowards(transform.position, moveSpot.position, speed * Time.deltaTime);
+    // Update is called once per frame
+    void Update()
+    {
+        Vector2 centroid = beAfraid();
+        Debug.Log("Centroid: " + centroid);
+        if (avoidObjects.Count > 0) {
+            isWalking = true;
+            transform.position = Vector2.MoveTowards(this.transform.position, centroid, -1 * speed * Time.deltaTime);
+            // transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        } else {
+            if(isWalking) {
+                walkCounter -= Time.deltaTime;
 
-              if (Vector2.Distance(transform.position, moveSpot.position) < 0.2f){
-                     if (waitTime <= 0){
-                            float randomX = Random.Range(minX, maxX);
-                            float randomY = Random.Range(minY, maxY);
-                            moveSpot.position = new Vector2(randomX, randomY);
-                            waitTime = startWaitTime;
-                     } else {
-                            waitTime -= Time.deltaTime;
-                     }
-              }
-       }
+                switch(walkDirection) {
+                        case 0:
+                            cowRigidBody.velocity = new Vector2(0, speed);
+                            break;
+                        case 1:
+                            cowRigidBody.velocity = new Vector2(speed, 0);
+                            break;
+                        case 2:
+                            cowRigidBody.velocity = new Vector2(0, -speed);
+                            break;
+                        case 3:
+                            cowRigidBody.velocity = new Vector2(-speed, 0);
+                            break;
+                    }
+
+                if (walkCounter < 0) {
+                    isWalking = false;
+                    waitCounter = waitTime;
+                }
+            } else {
+                waitCounter -= Time.deltaTime;
+                cowRigidBody.velocity = Vector2.zero;
+                if (waitCounter < 0) {
+                    ChooseDirection();
+                }
+            }
+        }
+        avoidObjects.Clear();
+    }
+
+    public Vector2 beAfraid()
+    {
+        Vector3 afraidVector = new Vector3(0, 0, 0);
+
+        for (int i = 0; i < borders.Length; i++)
+        {
+            float borderDistance = Vector2.Distance(this.transform.position, borders[i].transform.position);
+            if (borderDistance < 4)
+            {
+                avoidObjects.Add(borders[i]);
+                afraidVector += borders[i].transform.position;
+            }
+        }
+
+        for (int i = 0; i < cactuses.Length; i++)
+        {
+            float cactusDistance = Vector2.Distance(this.transform.position, cactuses[i].transform.position);
+            if (cactusDistance < 1)
+            {
+                // if (cactuses[i] == null)
+                // {
+                //     Debug.Log("There's no cactus there lol");
+                // }
+                avoidObjects.Add(cactuses[i]);
+                afraidVector += cactuses[i].transform.position;
+            }
+        }
+
+        float playerDistance = Vector2.Distance(this.transform.position, player.transform.position);
+        if (playerDistance < 5)
+        {
+            // Debug.Log("There's a player there");
+            // if (player == null)
+            // {
+            //     Debug.Log("There's no player there lol");
+            // }
+            avoidObjects.Add(player);
+            afraidVector += player.transform.position;
+        }
+        
+        float numAfraid = (float)avoidObjects.Count;
+        Debug.Log("Num Afraid: " + numAfraid);
+        Vector2 centroid = new Vector2(0, 0);
+        if (numAfraid > 0)
+        {
+            centroid = afraidVector / numAfraid;
+        }
+        return centroid;
+
+    }
+
+    public void ChooseDirection()
+    {
+        walkDirection = Random.Range(0, 4);
+        isWalking = true;
+        walkCounter = walkTime;
+    }
 }
 
-// using System.Collections;
 // using System.Collections.Generic;
+// using System.Collections;
 // using UnityEngine;
 
-// public class MoveCow : MonoBehaviour
-// {
-//     private Rigidbody2D cowRigidBody;
+// public class MoveCow : MonoBehaviour {
 
-//     private GameObject player;
-//     public float speed;
+//        public float speed = 10f;
+//        private float waitTime;
+//        public float startWaitTime = 2f;
 
-//     private float distance;
+//        public GameObject Cow;
 
-//     public bool isWalking;
+//        private Transform moveSpot;
+//        public Rigidbody2D rb2D;
+//        public float minX;
+//        public float maxX;
+//        public float minY;
+//        public float maxY;
 
-//     public float walkTime;
-//     private float walkCounter;
-//     public float waitTime;
-//     private float waitCounter;
+//        void Start(){
+              
+//               rb2D = transform.GetComponent<Rigidbody2D>();
+//               waitTime = startWaitTime;
+//               float randomX = Random.Range(minX, maxX);
+//               float randomY = Random.Range(minY, maxY);
+//               moveSpot = GameObject.FindGameObjectWithTag("MoveSpot").transform;
+//               moveSpot.position = new Vector2(randomX, randomY) * speed;
+//        }
 
-//     private int walkDirection;
-//     // public Transform target;
-//     // Start is called before the first frame update
-//     void Start()
-//     {
-//         player = GameObject.FindWithTag("Player");
-//         //target = GameObject.FindWithTag("Player").transform;
-//         cowRigidBody = GetComponent<Rigidbody2D>();
+//        void Update(){
+//               transform.position = Vector2.MoveTowards(transform.position, moveSpot.position, speed * Time.deltaTime);
 
-//         waitCounter = waitTime;
-//         walkCounter = walkTime;
-//         ChooseDirection();
-//     }
-
-//     // Update is called once per frame
-//     void Update()
-//     {
-//         // Vector3 direction = transform.position - target.position;
-
-//         // if(direction.sqrMagnitude < 25f) { 
-//         //     transform.Translate(direction.normalized * Time.deltaTime, Space.World);
-//         //     transform.forward = direction.normalized;
-//         // }
-//         if (distance < 5) {
-//             isWalking = true;
-//             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, -1 * speed * Time.deltaTime);
-//             // transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-//         } else {
-//             if(isWalking) {
-//                 walkCounter -= Time.deltaTime;
-
-//                 switch(walkDirection) {
-//                         case 0:
-//                             cowRigidBody.velocity = new Vector2(0, speed);
-//                             break;
-//                         case 1:
-//                             cowRigidBody.velocity = new Vector2(speed, 0);
-//                             break;
-//                         case 2:
-//                             cowRigidBody.velocity = new Vector2(0, -speed);
-//                             break;
-//                         case 3:
-//                             cowRigidBody.velocity = new Vector2(-speed, 0);
-//                             break;
-//                     }
-
-//                 if (walkCounter < 0) {
-//                     isWalking = false;
-//                     waitCounter = waitTime;
-//                 }
-//             } else {
-//                 waitCounter -= Time.deltaTime;
-//                 cowRigidBody.velocity = Vector2.zero;
-//                 if (waitCounter < 0) {
-//                     ChooseDirection();
-//                 }
-//             }
-//         }
-//     }
-
-//     public void ChooseDirection()
-//     {
-//         walkDirection = Random.Range(0, 4);
-//         isWalking = true;
-//         walkCounter = walkTime;
-//     }
-
-//     // private void OnCollisionEnter2D(Collision2D collision)
-//     //   {
-//     //         if (collision.gameObject.CompareTag("Cow")) {
-//     //               Destroy(GameObject.FindGameObjectWithTag("Cow"));
-//     //               holdingCow = true;
-//     //         }
-//     //         if (collision.gameObject.CompareTag("Pen") && holdingCow) {
-//     //               holdingCow = false;
-//     //         }
-//     //   }
+//               if (Vector2.Distance(transform.position, moveSpot.position) < 0.2f){
+//                      if (waitTime <= 0){
+//                             float randomX = Random.Range(minX, maxX);
+//                             float randomY = Random.Range(minY, maxY);
+//                             moveSpot.position = new Vector2(randomX, randomY);
+//                             waitTime = startWaitTime;
+//                      } else {
+//                             waitTime -= Time.deltaTime;
+//                      }
+//               }
+//        }
 // }
+

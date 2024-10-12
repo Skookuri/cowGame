@@ -72,7 +72,7 @@ public class PlayerMoveAround : MonoBehaviour {
 
             // Update vertical movement for the Animator
             animator.SetFloat("Vertical", hvMove.y);  // Send the vertical movement to the Animator
-            Debug.Log("Horizontal: " + hvMove.x + ", Vertical: " + hvMove.y); // Log movement values
+            // Debug.Log("Horizontal: " + hvMove.x + ", Vertical: " + hvMove.y); // Log movement values
            if (isAlive == true){
                   //transform.position = transform.position + hvMove * runSpeed * Time.deltaTime;
                   float moveHorizontal = Input.GetAxis("Horizontal");
