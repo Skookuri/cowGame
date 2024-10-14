@@ -75,6 +75,8 @@ public class PlayerMoveAround : MonoBehaviour {
 
             // Update vertical movement for the Animator
             animator.SetFloat("Vertical", hvMove.y);  // Send the vertical movement to the Animator
+            bool MovingHoriz = hvMove.x != 0;  // Check if horizontal movement is happening
+            animator.SetBool("MovingHoriz", MovingHoriz);  // Send the horizontal movement != checker to the Animator
             animator.SetBool("HasCow", holdingCow);
             Debug.Log("Horizontal: " + hvMove.x + ", Vertical: " + hvMove.y); // Log movement values
            if (isAlive == true){
@@ -112,9 +114,9 @@ public class PlayerMoveAround : MonoBehaviour {
                         } else if (hvMove.y > 0) {
                               animator.enabled = true; // Enable Animator for back view
                         } else if (hvMove.x != 0) {
-                              spriteRenderer.enabled = true;
-                              spriteRenderer.sprite = sideSprite;
-                              animator.enabled = false;
+                              animator.enabled = true; // Enable Animator for side view
+                              //spriteRenderer.sprite = sideSprite;
+                              //animator.enabled = false;
                         } else {
                               animator.enabled = false; // Disable Animator
                               spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
