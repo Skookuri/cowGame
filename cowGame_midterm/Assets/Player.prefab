@@ -125,8 +125,14 @@ MonoBehaviour:
   holdingCow: 0
   droppedCow: {fileID: 0}
   player: {fileID: 0}
+  spawnOffsetCactus: {x: 0, y: 0, z: 0}
+  flashImage: {fileID: 0}
+  flashDuration: 0.5
+  cowInPen: {fileID: 0}
+  spawnOffset: {x: 0, y: 0, z: 0}
   defaultSprite: {fileID: 21300000, guid: 6fa1520943f2876448632013e1dd48e0, type: 3}
   sideSprite: {fileID: 21300000, guid: 7ee27e02cc75e482982cfdc56ef2b83f, type: 3}
+  backSprite: {fileID: 0}
   holdingCowSprite: {fileID: 0}
 --- !u!1 &6901837889929940659
 GameObject:
@@ -138,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6530038095660847405}
   - component: {fileID: 8678562751532504572}
+  - component: {fileID: 7307627176882181102}
   m_Layer: 0
   m_Name: Player_Art
   m_TagString: Untagged
@@ -212,3 +219,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7307627176882181102
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901837889929940659}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fc83d6794982e4b8492e6bc5c9800466, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
