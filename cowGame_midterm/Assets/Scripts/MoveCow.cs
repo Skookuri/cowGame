@@ -41,7 +41,7 @@ public class MoveCow : MonoBehaviour
     void Update()
     {
         Vector2 centroid = beAfraid();
-        Debug.Log("Centroid: " + centroid);
+        //Debug.Log("Centroid: " + centroid);
         if (avoidObjects.Count > 0) {
             isWalking = true;
             transform.position = Vector2.MoveTowards(this.transform.position, centroid, -1 * speed * Time.deltaTime);
@@ -112,7 +112,7 @@ public class MoveCow : MonoBehaviour
         }
         
         float numAfraid = (float)avoidObjects.Count;
-        Debug.Log("Num Afraid: " + numAfraid);
+        //Debug.Log("Num Afraid: " + numAfraid);
         Vector2 centroid = new Vector2(0, 0);
         if (numAfraid > 0)
         {

@@ -78,7 +78,7 @@ public class PlayerMoveAround : MonoBehaviour {
             bool MovingHoriz = hvMove.x != 0;  // Check if horizontal movement is happening
             animator.SetBool("MovingHoriz", MovingHoriz);  // Send the horizontal movement != checker to the Animator
             animator.SetBool("HasCow", holdingCow);
-            Debug.Log("Horizontal: " + hvMove.x + ", Vertical: " + hvMove.y); // Log movement values
+            //Debug.Log("Horizontal: " + hvMove.x + ", Vertical: " + hvMove.y); // Log movement values
            if (isAlive == true){
                   //transform.position = transform.position + hvMove * runSpeed * Time.deltaTime;
                   float moveHorizontal = Input.GetAxis("Horizontal");
