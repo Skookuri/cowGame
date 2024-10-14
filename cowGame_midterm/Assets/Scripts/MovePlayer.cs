@@ -98,6 +98,8 @@ public class PlayerMoveAround : MonoBehaviour {
                  if (holdingCow) {
                         if (hvMove.y < 0) {
                                 animator.enabled = true; //Enable Animator for front view w cow
+                        } else if (hvMove.y > 0) {
+                                animator.enabled = true; //Enable Animator for back view w cow
                         } else {
                                 spriteRenderer.sprite = holdingCowSprite;
                                 animator.enabled = false;
