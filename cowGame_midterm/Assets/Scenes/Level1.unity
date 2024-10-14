@@ -12356,5 +12356,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberToSpawn: 5
   spawnPool:
-  - {fileID: 6744137418113990119, guid: bb06ad814856f2248ad9c9797c5be5b4, type: 3}
+  - {fileID: 6744137418113990119, guid: adf364c0f9fb12c4f971e3c34de0309e, type: 3}
+  - {fileID: 6744137418113990119, guid: 63fdb992b0cec344aa71376bb13cba92, type: 3}
+  - {fileID: 6744137418113990119, guid: 50ad4886ea84da94db88b5c1aa5e11d0, type: 3}
+  - {fileID: 6744137418113990119, guid: adf364c0f9fb12c4f971e3c34de0309e, type: 3}
+  - {fileID: 6744137418113990119, guid: adf364c0f9fb12c4f971e3c34de0309e, type: 3}
+  - {fileID: 6744137418113990119, guid: adf364c0f9fb12c4f971e3c34de0309e, type: 3}
+  - {fileID: 6744137418113990119, guid: 63fdb992b0cec344aa71376bb13cba92, type: 3}
   waitTime: 3

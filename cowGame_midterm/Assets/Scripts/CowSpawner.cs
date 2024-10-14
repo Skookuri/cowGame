@@ -5,7 +5,7 @@ using UnityEngine;
 public class CowSpawner: MonoBehaviour
 {
     public int numberToSpawn;
-    public List<GameObject> spawnPool;
+    public List<GameObject> spawnPool = new List<GameObject>();
     // public GameObject spawnArea;
     // public GameHandler timer;
     private float waitCounter;
@@ -64,16 +64,16 @@ public class CowSpawner: MonoBehaviour
         GameObject spawnedCow = Instantiate(toSpawn, pos,toSpawn.transform.rotation); 
         numberSpawned++;
 
-        Transform cow1 = spawnedCow.transform.Find("cow1"); //get cow1 info for Cow
-        Animator cowAnimator = cow1.gameObject.AddComponent<Animator>(); //added Animator component to cow1
+        // Transform cow1 = spawnedCow.transform.Find("cow1"); //get cow1 info for Cow
+        // Animator cowAnimator = cow1.gameObject.AddComponent<Animator>(); //added Animator component to cow1
 
-        //set Cow_Controller as Animator Controller
-        RuntimeAnimatorController cowController = Resources.Load<RuntimeAnimatorController>("Cow_Controller");
-        if (cowController == null) {
-            Debug.LogError("Cow_Controller could not be found in the Resources folder!");
-        } else {
-            cowAnimator.runtimeAnimatorController = cowController;
-        }
+        // //set Cow_Controller as Animator Controller
+        // RuntimeAnimatorController cowController = Resources.Load<RuntimeAnimatorController>("Cow_Controller");
+        // if (cowController == null) {
+        //     Debug.LogError("Cow_Controller could not be found in the Resources folder!");
+        // } else {
+        //     cowAnimator.runtimeAnimatorController = cowController;
+        // }
 
         
         // for(int i = 0; i < numberToSpawn; i++)
