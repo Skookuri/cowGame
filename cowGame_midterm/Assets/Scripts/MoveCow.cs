@@ -99,10 +99,6 @@ public class MoveCow : MonoBehaviour
             float cactusDistance = Vector2.Distance(this.transform.position, cactuses[i].transform.position);
             if (cactusDistance < 1)
             {
-                // if (cactuses[i] == null)
-                // {
-                //     Debug.Log("There's no cactus there lol");
-                // }
                 avoidObjects.Add(cactuses[i]);
                 afraidVector += cactuses[i].transform.position;
             }
@@ -111,11 +107,6 @@ public class MoveCow : MonoBehaviour
         float playerDistance = Vector2.Distance(this.transform.position, player.transform.position);
         if (playerDistance < 5)
         {
-            // Debug.Log("There's a player there");
-            // if (player == null)
-            // {
-            //     Debug.Log("There's no player there lol");
-            // }
             avoidObjects.Add(player);
             afraidVector += player.transform.position;
         }
