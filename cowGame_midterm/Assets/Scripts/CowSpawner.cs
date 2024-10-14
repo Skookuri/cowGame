@@ -64,7 +64,7 @@ public class CowSpawner: MonoBehaviour
         GameObject spawnedCow = Instantiate(toSpawn, pos,toSpawn.transform.rotation); 
         numberSpawned++;
 
-        Transform cow1 = spawnedCow.transform.Find("cow1");
+        Transform cow1 = spawnedCow.transform.Find("cow1"); //get cow1 info for Cow
         Animator cowAnimator = cow1.gameObject.AddComponent<Animator>(); //added Animator component to cow1
 
         //set Cow_Controller as Animator Controller
