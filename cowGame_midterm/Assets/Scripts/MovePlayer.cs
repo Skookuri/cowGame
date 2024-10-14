@@ -102,9 +102,11 @@ public class PlayerMoveAround : MonoBehaviour {
                                 animator.enabled = true; //Enable Animator for front view w cow
                         } else if (hvMove.y > 0) {
                                 animator.enabled = true; //Enable Animator for back view w cow
+                        } else if (hvMove.x != 0){
+                                animator.enabled = true; //Enable Animator for side view w cow
                         } else {
-                                spriteRenderer.sprite = holdingCowSprite;
-                                animator.enabled = false;
+                                animator.enabled = false;  // Disable Animator
+                                spriteRenderer.sprite = holdingCowSprite; //Show non-moving default sprite
                         }
                         
                         
