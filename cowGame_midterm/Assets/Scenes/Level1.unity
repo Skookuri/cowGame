@@ -11953,6 +11953,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 669455513}
     - target: {fileID: 9129819168483250345, guid: 15dea9602c09948f88e5fe930fe3c12f, type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 1625075957}
+    - target: {fileID: 9129819168483250345, guid: 15dea9602c09948f88e5fe930fe3c12f, type: 3}
       propertyPath: cowCounter
       value: 
       objectReference: {fileID: 910623453}
