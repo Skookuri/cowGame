@@ -10959,8 +10959,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 200, y: 300}
+  m_AnchoredPosition: {x: 0.000024796, y: -9}
+  m_SizeDelta: {x: 276.1, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535075837
 MonoBehaviour:
@@ -10983,8 +10983,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_Font: {fileID: 12800000, guid: 650a67be732e34494baa5fb42e622482, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -10993,19 +10993,21 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '- Use WASD to move
+  m_Text: 'Use WASD to move
 
-    - Collide with cows to pick them up
+    Collide with cows to pick them up
 
-    - Bring
-    cows to the pen to make money
+    Bring cows
+    to the pen to make $
 
-    - Black cows are worth $1k, Brown cows are
-    $2k, and the elusive Pink cows are $4k
+    Don''t run into the Cacti!
 
-    - Collect at least $20k to win!
+    Different Cows = Diff
+    $
+
+    Collect at least $20k to win!
 
 '
 --- !u!222 &1535075838
