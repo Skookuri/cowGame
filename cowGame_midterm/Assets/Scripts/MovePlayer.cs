@@ -95,7 +95,7 @@ public class PlayerMoveAround : MonoBehaviour {
                   Vector2 movement = new Vector2(moveHorizontal, moveVertical) * runSpeed;
                   rb2D.velocity = movement;
 
-                  if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0)){
+                  /*if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0)){
                   //     anim.SetBool ("Walk", true);
                   //     if (!WalkSFX.isPlaying){
                   //           WalkSFX.Play();
@@ -103,7 +103,7 @@ public class PlayerMoveAround : MonoBehaviour {
                   } else {
                   //     anim.SetBool ("Walk", false);
                   //     WalkSFX.Stop();
-                 }
+                 }*/
 
                  if (holdingCow) {
                         bool isBlack = false;
@@ -118,7 +118,7 @@ public class PlayerMoveAround : MonoBehaviour {
                               isPink = true;
                         }
 
-                        Debug.Log("Setting Animator Bools: isBlack = " + isBlack + ", isBrown = " + isBrown + ", isPink = " + isPink);
+                        //Debug.Log("Setting Animator Bools: isBlack = " + isBlack + ", isBrown = " + isBrown + ", isPink = " + isPink);
                         animator.SetBool("isBlack", isBlack);   // SEND BOOL INFO TO ANIMATOR
                         animator.SetBool("isBrown", isBrown);   // SEND BOOL INFO TO ANIMATOR
                         animator.SetBool("isPink", isPink);     // SEND BOOL INFO TO ANIMATOR
@@ -137,9 +137,7 @@ public class PlayerMoveAround : MonoBehaviour {
                                     spriteRenderer.sprite = holdingCowSprite_brown; //Show non-moving default sprite
                                 } else if (isPink) {
                                     spriteRenderer.sprite = holdingCowSprite_pink; //Show non-moving default sprite
-                                }
-                                
-                                
+                                }  
                         }
                         
                         
@@ -150,8 +148,6 @@ public class PlayerMoveAround : MonoBehaviour {
                               animator.enabled = true; // Enable Animator for back view
                         } else if (hvMove.x != 0) {
                               animator.enabled = true; // Enable Animator for side view
-                              //spriteRenderer.sprite = sideSprite;
-                              //animator.enabled = false;
                         } else {
                               animator.enabled = false; // Disable Animator
                               spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
