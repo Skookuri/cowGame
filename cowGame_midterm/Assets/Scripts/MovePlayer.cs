@@ -16,6 +16,7 @@ public class PlayerMoveAround : MonoBehaviour {
       public float startSpeed = 5f;
       public bool isAlive = true;
       public bool holdingCow;
+      string cowType;
       //public TextMeshProUGUI cowCounter;
       //private int count;
       public GameObject droppedCow;
@@ -47,6 +48,7 @@ public class PlayerMoveAround : MonoBehaviour {
            //anim = gameObject.GetComponentInChildren<Animator>();
            rb2D = transform.GetComponent<Rigidbody2D>();
            holdingCow = false;
+           cowType = "";
            GameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
            //count = 0;
 
@@ -148,6 +150,7 @@ public class PlayerMoveAround : MonoBehaviour {
       private void OnCollisionEnter2D(Collision2D collision)
       {
             if (collision.gameObject.CompareTag("Cow") && !holdingCow) {
+                  cowType = collision.gameObject.name;
                   Destroy(collision.gameObject);
                   holdingCow = true;
                   mooSound.Play();
@@ -155,7 +158,17 @@ public class PlayerMoveAround : MonoBehaviour {
             if (collision.gameObject.CompareTag("Pen") && holdingCow) {
                   //kachingSound.Play();
                   holdingCow = false;
-                  GameHandler.updateCowCounter();
+                  int cowValue = 0;
+                  if (cowType == "Cow1(Clone)") {
+                        cowValue = 1;
+                  }
+                  if (cowType == "Cow2(Clone)") {
+                        cowValue = 2;
+                  }
+                  if (cowType == "Cow3(Clone)") {
+                        cowValue = 4;
+                  }
+                  GameHandler.updateCowCounter(cowValue);
 
                   ContactPoint2D contact = collision.contacts[0];
                   Vector3 spawnPosition = new Vector3(contact.point.x, contact.point.y, 0) + spawnOffset;

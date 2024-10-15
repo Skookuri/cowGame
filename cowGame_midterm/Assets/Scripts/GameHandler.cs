@@ -50,8 +50,8 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-    public void updateCowCounter() {
-        money = money + 1;
+    public void updateCowCounter(int cowValue) {
+        money = money + cowValue;
         cowCounter.text = "$ Earned: $" + money.ToString() + "k";
     }
 
