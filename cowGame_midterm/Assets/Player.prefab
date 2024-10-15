@@ -119,21 +119,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e57193588ce4158b41668c4c719ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mooSound: {fileID: 0}
   rb2D: {fileID: 0}
   startSpeed: 10
   isAlive: 1
   holdingCow: 0
-  droppedCow: {fileID: 0}
+  droppedCowBlack: {fileID: 0}
+  droppedCowBrown: {fileID: 0}
+  droppedCowPink: {fileID: 0}
   player: {fileID: 0}
   spawnOffsetCactus: {x: 0, y: 0, z: 0}
   flashImage: {fileID: 0}
   flashDuration: 0.5
-  cowInPen: {fileID: 0}
   spawnOffset: {x: 0, y: 0, z: 0}
   defaultSprite: {fileID: 21300000, guid: 6fa1520943f2876448632013e1dd48e0, type: 3}
   sideSprite: {fileID: 21300000, guid: 7ee27e02cc75e482982cfdc56ef2b83f, type: 3}
   backSprite: {fileID: 0}
-  holdingCowSprite: {fileID: 0}
+  holdingCowSprite_black: {fileID: 21300000, guid: 16145ce584eb64c04ba0b36541918c70, type: 3}
+  holdingCowSprite_brown: {fileID: 21300000, guid: 5fe2677c5417a4db39d6a2fb2e3c1967, type: 3}
+  holdingCowSprite_pink: {fileID: 21300000, guid: eb7160ba4c98f46598fd4309f560be54, type: 3}
 --- !u!1 &6901837889929940659
 GameObject:
   m_ObjectHideFlags: 0

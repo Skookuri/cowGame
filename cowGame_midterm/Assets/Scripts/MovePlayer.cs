@@ -41,7 +41,9 @@ public class PlayerMoveAround : MonoBehaviour {
       public Sprite defaultSprite;
       public Sprite sideSprite;
       public Sprite backSprite;
-      public Sprite holdingCowSprite;
+      public Sprite holdingCowSprite_black;
+      public Sprite holdingCowSprite_brown;
+      public Sprite holdingCowSprite_pink;
       
 
       void Start(){
@@ -129,7 +131,15 @@ public class PlayerMoveAround : MonoBehaviour {
                                 animator.enabled = true; //Enable Animator for side view w cow
                         } else {
                                 animator.enabled = false;  // Disable Animator
-                                spriteRenderer.sprite = holdingCowSprite; //Show non-moving default sprite
+                                if (isBlack) {
+                                    spriteRenderer.sprite = holdingCowSprite_black; //Show non-moving default sprite
+                                } else if (isBrown) {
+                                    spriteRenderer.sprite = holdingCowSprite_brown; //Show non-moving default sprite
+                                } else if (isPink) {
+                                    spriteRenderer.sprite = holdingCowSprite_pink; //Show non-moving default sprite
+                                }
+                                
+                                
                         }
                         
                         
