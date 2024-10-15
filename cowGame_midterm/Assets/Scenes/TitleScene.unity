@@ -911,7 +911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -8}
+  m_AnchoredPosition: {x: 0, y: -3}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464140798
@@ -956,6 +956,8 @@ MonoBehaviour:
 
     Black cows are worth $1k, Brown cows are $2k, and
     the elusive Pink cows are $4k
+
+    Collect at least $20k to win!
 
 '
 --- !u!222 &1464140799

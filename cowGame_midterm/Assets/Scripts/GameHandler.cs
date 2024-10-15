@@ -9,7 +9,7 @@ public class GameHandler : MonoBehaviour
 {
     //cow slash money counter
     public TextMeshProUGUI cowCounter;
-    private int money;
+    public int money;
 
     //pause menu
     public GameObject pauseUI;

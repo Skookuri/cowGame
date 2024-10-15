@@ -9,8 +9,10 @@ public class GameTimer : MonoBehaviour
     public float timeRemaining = 60;
     public bool timerIsRunning = false;
     public GameObject timerText;
+    public GameHandler GameHandler;
 
     private void Start() {
+        GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
         timerIsRunning = true;
     }
 
@@ -23,7 +25,12 @@ public class GameTimer : MonoBehaviour
             else {
                 timeRemaining = 0;
                 timerIsRunning = false;
-                SceneManager.LoadScene("Level1Win");
+                if (GameHandler.money > 20) {
+                    SceneManager.LoadScene("Level1Win");
+                }
+                else {
+                    SceneManager.LoadScene("Level1Loss");
+                }
             }
         }
     }
