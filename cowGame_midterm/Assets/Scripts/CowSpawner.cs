@@ -13,7 +13,7 @@ public class CowSpawner: MonoBehaviour
     private bool timerIsRunning;
     private int numberSpawned;
     private GameObject player;
-    private bool FaceLeft = false; // determine which way cow is facing.
+    private bool FaceLeft = true; // determine which way cow is facing.
     
     // Dictionary to track each cow's SpriteRenderer by GameObject
     //private Dictionary<GameObject, SpriteRenderer> cowSpriteRenderers = new Dictionary<GameObject, SpriteRenderer>();
