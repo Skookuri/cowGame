@@ -83,6 +83,7 @@ public class PlayerMoveAround : MonoBehaviour {
             bool MovingHoriz = hvMove.x != 0;  // Check if horizontal movement is happening
             animator.SetBool("MovingHoriz", MovingHoriz);  // Send the horizontal movement != checker to the Animator
             animator.SetBool("HasCow", holdingCow);
+            
             //Debug.Log("Horizontal: " + hvMove.x + ", Vertical: " + hvMove.y); // Log movement values
            if (isAlive == true){
                   //transform.position = transform.position + hvMove * runSpeed * Time.deltaTime;
@@ -103,6 +104,23 @@ public class PlayerMoveAround : MonoBehaviour {
                  }
 
                  if (holdingCow) {
+                        bool isBlack = false;
+                        bool isBrown = false;
+                        bool isPink = false;
+
+                        if (cowType == "Cow1(Clone)") {
+                              isBlack = true;
+                        } else if (cowType == "Cow2(Clone)") {
+                              isBrown = true;
+                        } else if (cowType == "Cow3(Clone)") {
+                              isPink = true;
+                        }
+
+                        Debug.Log("Setting Animator Bools: isBlack = " + isBlack + ", isBrown = " + isBrown + ", isPink = " + isPink);
+                        animator.SetBool("isBlack", isBlack);   // SEND BOOL INFO TO ANIMATOR
+                        animator.SetBool("isBrown", isBrown);   // SEND BOOL INFO TO ANIMATOR
+                        animator.SetBool("isPink", isPink);     // SEND BOOL INFO TO ANIMATOR
+
                         if (hvMove.y < 0) {
                                 animator.enabled = true; //Enable Animator for front view w cow
                         } else if (hvMove.y > 0) {
