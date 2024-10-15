@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eacb577d33ebf415fbe1d2cc7e348600
+guid: 1dda965441fb3483a90d7fc58b15fca4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,91 +121,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Player_Art_Lift_Front_Black_Anim_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 90
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2078e48e0959041d8b12658d0e6e7c7c
-      internalID: 457847442
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_Art_Lift_Front_Black_Anim_1
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 0
-        width: 90
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0780b20f251f34b91bc3ac458b1cf34c
-      internalID: 644641143
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_Art_Lift_Front_Black_Anim_2
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 0
-        width: 90
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c3758deb4bdc4464bc9b03fc290a00f
-      internalID: 76522744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_Art_Lift_Front_Black_Anim_3
-      rect:
-        serializedVersion: 2
-        x: 270
-        y: 0
-        width: 90
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af32be816f8c34a57a598f8efa02d2f5
-      internalID: 1566721432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -216,11 +132,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Player_Art_Lift_Front_Black_Anim_0: 457847442
-      Player_Art_Lift_Front_Black_Anim_1: 644641143
-      Player_Art_Lift_Front_Black_Anim_2: 76522744
-      Player_Art_Lift_Front_Black_Anim_3: 1566721432
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
