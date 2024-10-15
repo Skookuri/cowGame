@@ -19,7 +19,9 @@ public class PlayerMoveAround : MonoBehaviour {
       string cowType;
       //public TextMeshProUGUI cowCounter;
       //private int count;
-      public GameObject droppedCow;
+      public GameObject droppedCowBlack;
+      public GameObject droppedCowBrown;
+      public GameObject droppedCowPink;
       public Transform player;
       public Vector3 spawnOffsetCactus;
 
@@ -198,8 +200,18 @@ public class PlayerMoveAround : MonoBehaviour {
                   float z = player.transform.position.y;
                   ContactPoint2D contact = collision.contacts[0];
                   Vector3 spawnPosition = new Vector3(contact.point.x, contact.point.y, 0) + spawnOffsetCactus;
-                  
-                  GameObject spawnedCow = Instantiate(droppedCow, spawnPosition, Quaternion.identity);
+
+                  GameObject spawnedCow; 
+
+                  if (cowType == "Cow1(Clone)") {
+                        spawnedCow = Instantiate(droppedCowBlack, spawnPosition, Quaternion.identity);
+                  }
+                  if (cowType == "Cow2(Clone)") {
+                        spawnedCow = Instantiate(droppedCowBrown, spawnPosition, Quaternion.identity);
+                  }
+                  else {
+                        spawnedCow = Instantiate(droppedCowPink, spawnPosition, Quaternion.identity);
+                  }
 
                   Transform cow1 = spawnedCow.transform.Find("cow1"); //get cow1 info for Cow
                   Animator cowAnimator = cow1.gameObject.AddComponent<Animator>(); //added Animator component to cow1

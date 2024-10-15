@@ -11399,6 +11399,18 @@ PrefabInstance:
       value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: droppedCowPink
+      value: 
+      objectReference: {fileID: 6744137418113990119, guid: 50ad4886ea84da94db88b5c1aa5e11d0, type: 3}
+    - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: droppedCowBlack
+      value: 
+      objectReference: {fileID: 6744137418113990119, guid: adf364c0f9fb12c4f971e3c34de0309e, type: 3}
+    - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
+      propertyPath: droppedCowBrown
+      value: 
+      objectReference: {fileID: 6744137418113990119, guid: 63fdb992b0cec344aa71376bb13cba92, type: 3}
+    - target: {fileID: 5836816476903113304, guid: 60ec2a18529394b508a73ed962101664, type: 3}
       propertyPath: holdingCowSprite
       value: 
       objectReference: {fileID: 21300000, guid: 16145ce584eb64c04ba0b36541918c70, type: 3}
