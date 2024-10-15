@@ -16,6 +16,11 @@ public class GameHandler : MonoBehaviour
     public GameObject instructionsUI;
     bool isPaused;
 
+    //timer
+    public float timeRemaining = 60;
+    public bool timerIsRunning = false;
+    public GameObject timerText;
+
 
     //tbh dont know why these exist
     //private GameObject player;
@@ -28,6 +33,7 @@ public class GameHandler : MonoBehaviour
         isPaused = false;
         pauseUI.SetActive(false);
         instructionsUI.SetActive(false);
+        timerIsRunning = true;
       }
 
     // Update is called once per frame
@@ -73,5 +79,36 @@ public class GameHandler : MonoBehaviour
 
     public void QuitToTitle() {
         SceneManager.LoadScene("TitleScene");
+    }
+
+
+    //timer stuff
+    void FixedUpdate() {
+        if (timerIsRunning) {
+            if (timeRemaining > 0) {
+                timeRemaining -= Time.deltaTime;
+                DisplayTime(timeRemaining);
+            }
+            else {
+                timeRemaining = 0;
+                timerIsRunning = false;
+                if (money >= 20) {
+                    SceneManager.LoadScene("Level1Win");
+                }
+                else {
+                    SceneManager.LoadScene("Level1Loss");
+                }
+            }
+        }
+    }
+
+    void DisplayTime(float timeToDisplay) {
+        timeToDisplay += 1;
+
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        Text timeTextTemp = timerText.GetComponent<Text>();
+        timeTextTemp.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }

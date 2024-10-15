@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7227649435366053582}
   - component: {fileID: 9129819168483250345}
-  - component: {fileID: 7607630816578461309}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -45,17 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0a5e0a8eac4418e8d6e1ae18b66132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numCows: 0
-  cowCounterText: {fileID: 0}
---- !u!114 &7607630816578461309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5097761143257227456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f32f544c37c04b88918db1a23cf0fe9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  cowCounter: {fileID: 0}
+  money: 0
+  pauseUI: {fileID: 0}
+  instructionsUI: {fileID: 0}
