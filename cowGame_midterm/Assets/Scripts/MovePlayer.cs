@@ -161,20 +161,26 @@ public class PlayerMoveAround : MonoBehaviour {
                   //kachingSound.Play();
                   holdingCow = false;
                   int cowValue = 0;
-                  if (cowType == "Cow1(Clone)") {
-                        cowValue = 1;
-                  }
-                  if (cowType == "Cow2(Clone)") {
-                        cowValue = 2;
-                  }
-                  if (cowType == "Cow3(Clone)") {
-                        cowValue = 4;
-                  }
-                  GameHandler.updateCowCounter(cowValue);
 
                   ContactPoint2D contact = collision.contacts[0];
                   Vector3 spawnPosition = new Vector3(contact.point.x, contact.point.y, 0) + spawnOffset;
-                  GameObject spawnedCow = Instantiate(cowInPen, spawnPosition, Quaternion.identity);
+                  GameObject spawnedCow = null;
+
+                  if (cowType == "Cow1(Clone)") {
+                        cowValue = 1;
+                        GameHandler.updateCowCounter(cowValue);
+                        spawnedCow = Instantiate(droppedCowBlack, spawnPosition, Quaternion.identity);
+                  }
+                  if (cowType == "Cow2(Clone)") {
+                        cowValue = 2;
+                        GameHandler.updateCowCounter(cowValue);
+                        spawnedCow = Instantiate(droppedCowBrown, spawnPosition, Quaternion.identity);
+                  }
+                  if (cowType == "Cow3(Clone)") {
+                        cowValue = 4;
+                        GameHandler.updateCowCounter(cowValue);
+                        spawnedCow = Instantiate(droppedCowPink, spawnPosition, Quaternion.identity);
+                  }
 
                   Transform cow1 = spawnedCow.transform.Find("cow1"); //get cow1 info for Cow
                   Animator cowAnimator = cow1.gameObject.AddComponent<Animator>(); //added Animator component to cow1
@@ -201,7 +207,7 @@ public class PlayerMoveAround : MonoBehaviour {
                   ContactPoint2D contact = collision.contacts[0];
                   Vector3 spawnPosition = new Vector3(contact.point.x, contact.point.y, 0) + spawnOffsetCactus;
 
-                  GameObject spawnedCow; 
+                  GameObject spawnedCow = null; 
 
                   if (cowType == "Cow1(Clone)") {
                         spawnedCow = Instantiate(droppedCowBlack, spawnPosition, Quaternion.identity);
@@ -209,7 +215,7 @@ public class PlayerMoveAround : MonoBehaviour {
                   if (cowType == "Cow2(Clone)") {
                         spawnedCow = Instantiate(droppedCowBrown, spawnPosition, Quaternion.identity);
                   }
-                  else {
+                  if (cowType == "Cow3(Clone)") {
                         spawnedCow = Instantiate(droppedCowPink, spawnPosition, Quaternion.identity);
                   }
 
