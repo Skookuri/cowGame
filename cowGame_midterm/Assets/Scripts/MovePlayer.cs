@@ -8,6 +8,7 @@ public class PlayerMoveAround : MonoBehaviour {
 
       
       //public AudioSource WalkSFX;
+      public AudioSource mooSound;
       private GameHandler GameHandler;
       public Rigidbody2D rb2D;
       private bool FaceLeft = false; // determine which way player is facing.
@@ -42,6 +43,7 @@ public class PlayerMoveAround : MonoBehaviour {
       
 
       void Start(){
+           
            //anim = gameObject.GetComponentInChildren<Animator>();
            rb2D = transform.GetComponent<Rigidbody2D>();
            holdingCow = false;
@@ -146,11 +148,12 @@ public class PlayerMoveAround : MonoBehaviour {
       private void OnCollisionEnter2D(Collision2D collision)
       {
             if (collision.gameObject.CompareTag("Cow") && !holdingCow) {
-                  
                   Destroy(collision.gameObject);
                   holdingCow = true;
+                  mooSound.Play();
             }
             if (collision.gameObject.CompareTag("Pen") && holdingCow) {
+                  //kachingSound.Play();
                   holdingCow = false;
                   GameHandler.updateCowCounter();
 

@@ -14,9 +14,6 @@ public class CowSpawner: MonoBehaviour
     private int numberSpawned;
     private GameObject player;
     private bool FaceLeft = true; // determine which way cow is facing.
-    
-    // Dictionary to track each cow's SpriteRenderer by GameObject
-    //private Dictionary<GameObject, SpriteRenderer> cowSpriteRenderers = new Dictionary<GameObject, SpriteRenderer>();
     private SpriteRenderer spriteRenderer;
 
 
@@ -125,9 +122,6 @@ public class CowSpawner: MonoBehaviour
         {
             Destroy(o);
         }
-
-        // Clear the dictionary when all cows are destroyed
-        //cowSpriteRenderers.Clear();
     }
 
     private void cowTurn() {
