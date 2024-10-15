@@ -174,18 +174,21 @@ public class PlayerMoveAround : MonoBehaviour {
                         cowValue = 1;
                         GameHandler.updateCowCounter(cowValue);
                         spawnedCow = Instantiate(droppedCowBlack, spawnPosition, Quaternion.identity);
+                        isBlack = true;
                         cowTransform = spawnedCow.transform.Find("cow1"); //get cow1 info for Black Cow
                   }
                   if (cowType == "Cow2(Clone)") {
                         cowValue = 2;
                         GameHandler.updateCowCounter(cowValue);
                         spawnedCow = Instantiate(droppedCowBrown, spawnPosition, Quaternion.identity);
+                        isBrown = true;
                         cowTransform = spawnedCow.transform.Find("cow2"); //get cow1 info for Brown Cow
                   }
                   if (cowType == "Cow3(Clone)") {
                         cowValue = 4;
                         GameHandler.updateCowCounter(cowValue);
                         spawnedCow = Instantiate(droppedCowPink, spawnPosition, Quaternion.identity);
+                        isPink = true;
                         cowTransform = spawnedCow.transform.Find("cow3"); //get cow3 info for Pink Cow
                   }
 
