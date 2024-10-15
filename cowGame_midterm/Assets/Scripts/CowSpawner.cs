@@ -13,13 +13,18 @@ public class CowSpawner: MonoBehaviour
     private bool timerIsRunning;
     private int numberSpawned;
     private GameObject player;
+    private bool FaceLeft = false; // determine which way cow is facing.
+    
+    // Dictionary to track each cow's SpriteRenderer by GameObject
+    //private Dictionary<GameObject, SpriteRenderer> cowSpriteRenderers = new Dictionary<GameObject, SpriteRenderer>();
+    private SpriteRenderer spriteRenderer;
+
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         waitCounter = waitTime;
         spawnObjects();
-
     }
 
     void Update()
@@ -32,6 +37,13 @@ public class CowSpawner: MonoBehaviour
         {
             spawnObjects();
             waitCounter = waitTime;
+        }
+
+        Vector3 hvMove = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+
+        // Turning. Reverse if cow is moving right/left
+        if ((hvMove.x < 0 && !FaceLeft) || (hvMove.x > 0 && FaceLeft)){
+            cowTurn();
         }
         // timerIsRunning = timer.GetComponent<timerIsRunning>();
         // while (timerIsRunning)
@@ -97,6 +109,14 @@ public class CowSpawner: MonoBehaviour
         } else {
             Debug.LogError("Cow transform not found for the spawned cow: " + spawnedCow.name);
         }
+
+        // Get the SpriteRenderer and store it in the dictionary
+        spriteRenderer = cowTransform.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null) {
+            Debug.LogError("SpriteRenderer component not found in the cow: " + spawnedCow.name);
+        } /*else {
+            cowSpriteRenderers[spawnedCow] = cowSpriteRenderer; // Add to dictionary
+        }*/
     }
 
     private void destroyObjects()
@@ -105,5 +125,23 @@ public class CowSpawner: MonoBehaviour
         {
             Destroy(o);
         }
+
+        // Clear the dictionary when all cows are destroyed
+        //cowSpriteRenderers.Clear();
+    }
+
+    private void cowTurn() {
+        if (spriteRenderer == null)
+        {
+            Debug.LogError("No SpriteRenderer available to flip the cow.");
+            return;
+        }
+        // NOTE: Switch cow facing label
+        FaceLeft = !FaceLeft;
+
+        // NOTE: Multiply cow's x local scale by -1.
+        Vector3 theScale = spriteRenderer.transform.localScale;
+        theScale.x *= -1;
+        spriteRenderer.transform.localScale = theScale;
     }
 }
