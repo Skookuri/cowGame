@@ -28,7 +28,6 @@ public class PlayerMoveAround : MonoBehaviour {
       public Image flashImage; // Assign the FlashImage in the Inspector
       public float flashDuration = 0.5f; // Duration of the flash effect
 
-      public GameObject cowInPen; // The sprite prefab to instantiate
       public Vector3 spawnOffset;
 
       // Reference to the SpriteRenderer component in Player_Art
