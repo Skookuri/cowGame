@@ -164,32 +164,46 @@ public class PlayerMoveAround : MonoBehaviour {
                   ContactPoint2D contact = collision.contacts[0];
                   Vector3 spawnPosition = new Vector3(contact.point.x, contact.point.y, 0) + spawnOffset;
                   GameObject spawnedCow = null;
+                  bool isBlack = false;
+                  bool isBrown = false;
+                  bool isPink = false;
+
+                  Transform cowTransform = null;
 
                   if (cowType == "Cow1(Clone)") {
                         cowValue = 1;
                         GameHandler.updateCowCounter(cowValue);
                         spawnedCow = Instantiate(droppedCowBlack, spawnPosition, Quaternion.identity);
+                        cowTransform = spawnedCow.transform.Find("cow1"); //get cow1 info for Black Cow
                   }
                   if (cowType == "Cow2(Clone)") {
                         cowValue = 2;
                         GameHandler.updateCowCounter(cowValue);
                         spawnedCow = Instantiate(droppedCowBrown, spawnPosition, Quaternion.identity);
+                        cowTransform = spawnedCow.transform.Find("cow2"); //get cow1 info for Brown Cow
                   }
                   if (cowType == "Cow3(Clone)") {
                         cowValue = 4;
                         GameHandler.updateCowCounter(cowValue);
                         spawnedCow = Instantiate(droppedCowPink, spawnPosition, Quaternion.identity);
+                        cowTransform = spawnedCow.transform.Find("cow3"); //get cow3 info for Pink Cow
                   }
 
-                  Transform cow1 = spawnedCow.transform.Find("cow1"); //get cow1 info for Cow
-                  Animator cowAnimator = cow1.gameObject.AddComponent<Animator>(); //added Animator component to cow1
+                  Animator cowAnimator = cowTransform.gameObject.AddComponent<Animator>(); //added Animator component to cow1/cow2/cow3
 
                   //set Cow_Controller as Animator Controller
                   RuntimeAnimatorController cowController = Resources.Load<RuntimeAnimatorController>("Cow_Controller");
+
                   if (cowController == null) {
                         Debug.LogError("Cow_Controller could not be found in the Resources folder!");
-                  } else {
+                  } else if (cowTransform != null) {
                         cowAnimator.runtimeAnimatorController = cowController;
+                        // Set the bool values for the Animator
+                        cowAnimator.SetBool("isBlack", isBlack);   // SEND BOOL INFO TO ANIMATOR
+                        cowAnimator.SetBool("isBrown", isBrown);   // SEND BOOL INFO TO ANIMATOR
+                        cowAnimator.SetBool("isPink", isPink);     // SEND BOOL INFO TO ANIMATOR
+                  } else {
+                        Debug.LogError("Cow transform not found for the spawned cow: " + spawnedCow.name);
                   }
 
                   //count = count + 1;
@@ -207,26 +221,43 @@ public class PlayerMoveAround : MonoBehaviour {
                   Vector3 spawnPosition = new Vector3(contact.point.x, contact.point.y, 0) + spawnOffsetCactus;
 
                   GameObject spawnedCow = null; 
+                  Transform cowTransform = null;
+
+                  bool isBlack = false;
+                  bool isBrown = false;
+                  bool isPink = false;
 
                   if (cowType == "Cow1(Clone)") {
                         spawnedCow = Instantiate(droppedCowBlack, spawnPosition, Quaternion.identity);
+                        isBlack = true;
+                        cowTransform = spawnedCow.transform.Find("cow1"); //get cow1 info for Black Cow
                   }
                   if (cowType == "Cow2(Clone)") {
                         spawnedCow = Instantiate(droppedCowBrown, spawnPosition, Quaternion.identity);
+                        isBrown = true;
+                        cowTransform = spawnedCow.transform.Find("cow2"); //get cow1 info for Brown Cow
                   }
                   if (cowType == "Cow3(Clone)") {
                         spawnedCow = Instantiate(droppedCowPink, spawnPosition, Quaternion.identity);
+                        isPink = true;
+                        cowTransform = spawnedCow.transform.Find("cow3"); //get cow3 info for Pink Cow
                   }
 
-                  Transform cow1 = spawnedCow.transform.Find("cow1"); //get cow1 info for Cow
-                  Animator cowAnimator = cow1.gameObject.AddComponent<Animator>(); //added Animator component to cow1
+                  Animator cowAnimator = cowTransform.gameObject.AddComponent<Animator>(); //added Animator component to cow1/cow2/cow3
 
                   //set Cow_Controller as Animator Controller
                   RuntimeAnimatorController cowController = Resources.Load<RuntimeAnimatorController>("Cow_Controller");
+
                   if (cowController == null) {
                         Debug.LogError("Cow_Controller could not be found in the Resources folder!");
-                  } else {
+                  } else if (cowTransform != null) {
                         cowAnimator.runtimeAnimatorController = cowController;
+                        // Set the bool values for the Animator
+                        cowAnimator.SetBool("isBlack", isBlack);   // SEND BOOL INFO TO ANIMATOR
+                        cowAnimator.SetBool("isBrown", isBrown);   // SEND BOOL INFO TO ANIMATOR
+                        cowAnimator.SetBool("isPink", isPink);     // SEND BOOL INFO TO ANIMATOR
+                  } else {
+                        Debug.LogError("Cow transform not found for the spawned cow: " + spawnedCow.name);
                   }
             }
       }

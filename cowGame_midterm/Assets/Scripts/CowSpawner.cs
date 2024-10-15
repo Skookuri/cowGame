@@ -79,7 +79,7 @@ public class CowSpawner: MonoBehaviour
 
         Transform cowTransform = null;
 
-        if (spawnedCow.name == "Cow 1(Clone)") {
+        if (spawnedCow.name == "Cow1(Clone)") {
             isBlack = true;
             cowTransform = spawnedCow.transform.Find("cow1"); //get cow1 info for Black Cow
         } else if (spawnedCow.name == "Cow2(Clone)"){
@@ -111,9 +111,7 @@ public class CowSpawner: MonoBehaviour
         spriteRenderer = cowTransform.GetComponent<SpriteRenderer>();
         if (spriteRenderer == null) {
             Debug.LogError("SpriteRenderer component not found in the cow: " + spawnedCow.name);
-        } /*else {
-            cowSpriteRenderers[spawnedCow] = cowSpriteRenderer; // Add to dictionary
-        }*/
+        }
     }
 
     private void destroyObjects()
